@@ -11,6 +11,7 @@ RUN dnf -y install \
     pkgconf \
     libX11-devel \
     speed-dreams \
+    texinfo \
     emacs-nw \
     antimicrox \
     onionshare \
@@ -43,13 +44,13 @@ RUN dnf -y install \
     alsa-utils \
     && dnf clean all
 
-# Build custom ratpoison 1.4.10-beta from git
+# Build custom ratpoison
 RUN git clone https://git.savannah.nongnu.org/git/ratpoison.git /tmp/ratpoison && \
     cd /tmp/ratpoison && \
     git checkout a34577dd8662d2cb3f617e187f9f60288d71ccbd && \
     ./autogen.sh && \
     ./configure --prefix=/usr --disable-debug && \
-    make -j$(nproc) && \
+    make -j$(nproc) V=1 && \
     make install && \
     rm -rf /tmp/ratpoison
 
