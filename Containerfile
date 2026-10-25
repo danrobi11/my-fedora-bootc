@@ -10,6 +10,26 @@ RUN dnf -y install \
     libtool \
     pkgconf \
     libX11-devel \
+    speed-dreams \
+    emacs-nw \
+    antimicrox \
+    onionshare \
+    torbrowser-launcher \
+    android-tools \
+    cloudflared \
+    libnotify \
+    dillo \
+    dunst \
+    firejail \
+    shotgun \
+    7zip \
+    pciutils \
+    util-linux \
+    wget \
+    curl \
+    sudo \
+    which \
+    jq \
     libXext-devel \
     libXinerama-devel \
     libXrandr-devel \
@@ -18,6 +38,7 @@ RUN dnf -y install \
     xorg-x11-server-Xorg \
     xorg-x11-xinit \
     xterm \
+    xclip \
     alsa-utils \
     && dnf clean all
 
