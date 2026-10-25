@@ -76,9 +76,9 @@ RUN mkdir -p /etc/X11/xinit && \
 # Hostname
 RUN echo "fedora1" > /etc/hostname
 
-# User + wheel group
-RUN groupadd -g 1000 danrobi && \
-    useradd -m -u 1000 -g 1000 -G wheel -s /bin/bash danrobi && \
+# Create user danrobi with wheel (sudo)
+RUN groupadd -f danrobi && \
+    useradd -m -g danrobi -G wheel -s /bin/bash danrobi && \
     echo "danrobi ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/danrobi && \
     chmod 0440 /etc/sudoers.d/danrobi
 
