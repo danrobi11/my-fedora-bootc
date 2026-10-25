@@ -61,10 +61,11 @@ RUN git clone --depth=1 https://github.com/rvaiya/keyd.git /tmp/keyd && \
     make install && \
     rm -rf /tmp/keyd
 
-# Enable keyd
-RUN systemctl enable keyd
+# Enable keyd via symlink
+RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
+    ln -sf /usr/lib/systemd/system/keyd.service /etc/systemd/system/multi-user.target.wants/keyd.service
 
-# Copy keyd config (matching your Nix setup)
+# Copy keyd config
 COPY configs/keyd-default.conf /etc/keyd/default.conf
 
 # Basic X11 / ratpoison setup
