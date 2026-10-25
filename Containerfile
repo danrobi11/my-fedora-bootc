@@ -16,12 +16,10 @@ RUN dnf -y install \
     onionshare \
     torbrowser-launcher \
     android-tools \
-    cloudflared \
     libnotify \
     dillo \
     dunst \
     firejail \
-    shotgun \
     7zip \
     pciutils \
     util-linux \
