@@ -32,6 +32,9 @@ RUN dnf -y install \
     libXinerama-devel \
     libXrandr-devel \
     libXft-devel \
+    libXt-devel \
+    xorg-x11-proto-devel \
+    pkgconf-pkg-config \
     dmenu \
     xorg-x11-server-Xorg \
     xorg-x11-xinit \
@@ -45,8 +48,8 @@ RUN git clone https://git.savannah.nongnu.org/git/ratpoison.git /tmp/ratpoison &
     cd /tmp/ratpoison && \
     git checkout a34577dd8662d2cb3f617e187f9f60288d71ccbd && \
     ./autogen.sh && \
-    ./configure --prefix=/usr && \
-    make && \
+    ./configure --prefix=/usr --disable-debug && \
+    make -j$(nproc) && \
     make install && \
     rm -rf /tmp/ratpoison
 
