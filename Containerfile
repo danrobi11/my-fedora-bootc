@@ -71,5 +71,14 @@ COPY configs/keyd-default.conf /etc/keyd/default.conf
 RUN mkdir -p /etc/X11/xinit && \
     echo 'exec ratpoison' > /etc/X11/xinit/xinitrc
 
+# Hostname
+RUN echo "fedora1" > /etc/hostname
+
+# User + wheel group
+RUN groupadd -g 1000 danrobi && \
+    useradd -m -u 1000 -g 1000 -G wheel -s /bin/bash danrobi && \
+    echo "danrobi ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/danrobi && \
+    chmod 0440 /etc/sudoers.d/danrobi
+
 # Lint the image
 RUN bootc container lint
