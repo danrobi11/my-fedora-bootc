@@ -16,6 +16,7 @@ RUN dnf -y install \
     android-tools \
     libnotify \
     glibc-langpack-en \
+    at-spi2-core \
     dillo \
     dunst \
     firejail \
@@ -68,6 +69,12 @@ RUN printf '%s\n' \
 
 # Allow X to start from console
 RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
+
+# Ensure user is in audio group on boot
+COPY ensure-audio-group.sh /usr/local/bin/ensure-audio-group.sh
+COPY ensure-audio-group.service /etc/systemd/system/ensure-audio-group.service
+RUN chmod +x /usr/local/bin/ensure-audio-group.sh && \
+    systemctl enable ensure-audio-group.service
 
 # Lint the image
 RUN bootc container lint
