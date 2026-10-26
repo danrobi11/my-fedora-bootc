@@ -36,6 +36,7 @@ RUN dnf -y install \
     xclip \
     xset \
     alsa-utils \
+    alsa-lib \
     && dnf clean all
 
 # Install custom ratpoison binary
