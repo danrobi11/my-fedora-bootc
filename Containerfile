@@ -15,6 +15,7 @@ RUN dnf -y install \
     onionshare \
     android-tools \
     libnotify \
+    glibc-langpack-en \
     dillo \
     dunst \
     firejail \
