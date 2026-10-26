@@ -55,16 +55,11 @@ RUN dnf -y install \
     alsa-utils \
     && dnf clean all
 
-# Build custom ratpoison
-RUN git clone --depth=1 https://git.savannah.nongnu.org/git/ratpoison.git /tmp/ratpoison && \
-    cd /tmp/ratpoison && \
-    git fetch --depth=1 origin a34577dd8662d2cb3f617e187f9f60288d71ccbd && \
-    git checkout a34577dd8662d2cb3f617e187f9f60288d71ccbd && \
-    ./autogen.sh && \
-    ./configure --prefix=/usr --disable-debug && \
-    make -j$(nproc) && \
-    make install && \
-    rm -rf /tmp/ratpoison
+# Install custom ratpoison binary
+RUN mkdir -p /usr/local/bin && \
+    curl -fsSL -o /usr/local/bin/ratpoison \
+      https://github.com/danrobi11/my-ratpoison/releases/latest/download/ratpoison && \
+    chmod +x /usr/local/bin/ratpoison
 
 # Basic X11 / ratpoison setup
 RUN mkdir -p /etc/X11/xinit && \
