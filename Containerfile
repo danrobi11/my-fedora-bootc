@@ -51,6 +51,7 @@ RUN dnf -y install \
     xorg-x11-xinit \
     xterm \
     xclip \
+    xset \
     alsa-utils \
     && dnf clean all
 
