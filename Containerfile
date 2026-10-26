@@ -70,21 +70,12 @@ RUN git clone --depth=1 https://github.com/rvaiya/keyd.git /tmp/keyd && \
     cd /tmp/keyd && \
     make && \
     make install && \
-    mkdir -p /usr/lib/systemd/system && \
-    if [ -f keyd.service ]; then \
-        cp keyd.service /usr/lib/systemd/system/keyd.service; \
-    elif [ -f scripts/keyd.service ]; then \
-        cp scripts/keyd.service /usr/lib/systemd/system/keyd.service; \
-    else \
-        curl -fsSL -o /usr/lib/systemd/system/keyd.service \
-          https://raw.githubusercontent.com/rvaiya/keyd/master/keyd.service; \
-    fi && \
     rm -rf /tmp/keyd
 
-# Enable keyd
+# Enable keyd (unit should exist after make install)
 RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
     ln -sf /usr/lib/systemd/system/keyd.service \
-           /etc/systemd/system/multi-user.target.wants/keyd.service
+           /etc/systemd/system/multi-user.target.wants/keyd.service || true
 
 # Enable wpa_supplicant
 RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
