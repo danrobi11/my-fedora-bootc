@@ -1,6 +1,7 @@
 #!/bin/bash
-# Ensure the audio group exists and danrobi is in it
-getent group audio >/dev/null || groupadd -r audio
-if id danrobi &>/dev/null; then
-  usermod -aG audio danrobi
+# Ensure danrobi is in the audio group via /etc/group override
+if ! grep -q '^audio:' /etc/group; then
+  echo "audio:x:63:danrobi" >> /etc/group
+elif ! grep -q '^audio:.*danrobi' /etc/group; then
+  sed -i '/^audio:/s/$/,danrobi/' /etc/group
 fi
