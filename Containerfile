@@ -27,11 +27,7 @@ RUN dnf -y install \
     sudo \
     which \
     jq \
-    libXext \
-    libXinerama \
-    libXrandr \
-    libXft \
-    libXt \
+    libXtst \
     scrot \
     dmenu \
     xorg-x11-server-Xorg \
