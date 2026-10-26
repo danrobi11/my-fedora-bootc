@@ -55,8 +55,9 @@ RUN dnf -y install \
     && dnf clean all
 
 # Build custom ratpoison
-RUN git clone https://git.savannah.nongnu.org/git/ratpoison.git /tmp/ratpoison && \
+RUN git clone --depth=1 https://git.savannah.nongnu.org/git/ratpoison.git /tmp/ratpoison && \
     cd /tmp/ratpoison && \
+    git fetch --depth=1 origin a34577dd8662d2cb3f617e187f9f60288d71ccbd && \
     git checkout a34577dd8662d2cb3f617e187f9f60288d71ccbd && \
     ./autogen.sh && \
     ./configure --prefix=/usr --disable-debug && \
