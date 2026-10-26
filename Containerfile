@@ -53,25 +53,13 @@ RUN mkdir -p /usr/local/bin && \
 RUN mkdir -p /etc/X11/xinit && \
     echo 'exec ratpoison' > /etc/X11/xinit/xinitrc
 
+# Allow X to start from console
+RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
+
 # Enable wpa_supplicant
 RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
     ln -sf /usr/lib/systemd/system/wpa_supplicant.service \
            /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
-
-# Download hosts file to a staging location
-RUN mkdir -p /usr/local/share && \
-    curl -fsSL -o /usr/local/share/hosts.stevenblack \
-      https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-
-# Copy it into place at first boot (optional oneshot)
-RUN printf '%s\n' \
-    '#!/bin/sh' \
-    'cp -f /usr/local/share/hosts.stevenblack /etc/hosts' \
-    > /usr/local/bin/install-hosts.sh && \
-    chmod +x /usr/local/bin/install-hosts.sh
-
-# Allow X to start from console
-RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 
 # Ensure user is in audio group on boot
 COPY ensure-audio-group.sh /usr/local/bin/ensure-audio-group.sh
