@@ -14,6 +14,8 @@ RUN dnf -y install \
     texinfo \
     emacs-nw \
     antimicrox \
+    conky \
+    firefox \
     onionshare \
     torbrowser-launcher \
     android-tools \
