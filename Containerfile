@@ -65,29 +65,14 @@ RUN git clone --depth=1 https://git.savannah.nongnu.org/git/ratpoison.git /tmp/r
     make install && \
     rm -rf /tmp/ratpoison
 
-# Build and install keyd from source
-RUN git clone --depth=1 https://github.com/rvaiya/keyd.git /tmp/keyd && \
-    cd /tmp/keyd && \
-    make && \
-    make install && \
-    rm -rf /tmp/keyd
-
-# Enable keyd (unit should exist after make install)
-RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
-    ln -sf /usr/lib/systemd/system/keyd.service \
-           /etc/systemd/system/multi-user.target.wants/keyd.service || true
+# Basic X11 / ratpoison setup
+RUN mkdir -p /etc/X11/xinit && \
+    echo 'exec ratpoison' > /etc/X11/xinit/xinitrc
 
 # Enable wpa_supplicant
 RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
     ln -sf /usr/lib/systemd/system/wpa_supplicant.service \
            /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
-
-# Keyd config
-COPY configs/keyd-default.conf /etc/keyd/default.conf
-
-# Basic X11 / ratpoison setup
-RUN mkdir -p /etc/X11/xinit && \
-    echo 'exec ratpoison' > /etc/X11/xinit/xinitrc
 
 # Allow X to start from console
 RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
