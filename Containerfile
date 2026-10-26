@@ -16,6 +16,9 @@ RUN dnf -y install \
     android-tools \
     libnotify \
     glibc-langpack-en \
+    gtk3 \
+    atk \
+    at-spi2-atk \
     at-spi2-core \
     dillo \
     dunst \
