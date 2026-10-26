@@ -3,28 +3,16 @@ FROM quay.io/fedora/fedora-bootc:45
 # Install build dependencies and packages
 RUN dnf -y install \
     git \
-    gcc \
-    make \
-    autoconf \
-    automake \
-    libtool \
     pkgconf \
-    libX11-devel \
-    speed-dreams \
-    texinfo \
     emacs-nw \
-    antimicrox \
-    mpv \
-    vlc \
+    fuse \
     conky \
     feh \
     NetworkManager-wifi \
     wpa_supplicant \
     iw \
     wireless-regdb \
-    firefox \
     onionshare \
-    torbrowser-launcher \
     android-tools \
     libnotify \
     dillo \
@@ -38,13 +26,11 @@ RUN dnf -y install \
     sudo \
     which \
     jq \
-    libXext-devel \
-    libXinerama-devel \
-    libXrandr-devel \
-    libXft-devel \
-    libXt-devel \
-    xorg-x11-proto-devel \
-    pkgconf-pkg-config \
+    libXext \
+    libXinerama \
+    libXrandr \
+    libXft \
+    libXt \
     scrot \
     dmenu \
     xorg-x11-server-Xorg \
@@ -70,11 +56,17 @@ RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
     ln -sf /usr/lib/systemd/system/wpa_supplicant.service \
            /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
 
-# Download and install StevenBlack hosts
+# Download hosts file to a staging location
 RUN mkdir -p /usr/local/share && \
     curl -fsSL -o /usr/local/share/hosts.stevenblack \
-      https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts && \
-    cp -f /usr/local/share/hosts.stevenblack /etc/hosts
+      https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+
+# Copy it into place at first boot (optional oneshot)
+RUN printf '%s\n' \
+    '#!/bin/sh' \
+    'cp -f /usr/local/share/hosts.stevenblack /etc/hosts' \
+    > /usr/local/bin/install-hosts.sh && \
+    chmod +x /usr/local/bin/install-hosts.sh
 
 # Allow X to start from console
 RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
