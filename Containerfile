@@ -16,6 +16,11 @@ RUN dnf -y install \
     bootc \
     antimicrox \
     conky \
+    feh \
+    NetworkManager-wifi \
+    wpa_supplicant \
+    iw \
+    wireless-regdb \
     firefox \
     onionshare \
     torbrowser-launcher \
@@ -39,6 +44,7 @@ RUN dnf -y install \
     libXt-devel \
     xorg-x11-proto-devel \
     pkgconf-pkg-config \
+    scrot \
     dmenu \
     xorg-x11-server-Xorg \
     xorg-x11-xinit \
@@ -62,19 +68,31 @@ RUN git clone --depth=1 https://github.com/rvaiya/keyd.git /tmp/keyd && \
     cd /tmp/keyd && \
     make && \
     make install && \
+    # Install the systemd unit if the Makefile didn't
+    if [ -f keyd.service ]; then \
+        cp keyd.service /usr/lib/systemd/system/keyd.service; \
+    elif [ -f scripts/keyd.service ]; then \
+        cp scripts/keyd.service /usr/lib/systemd/system/keyd.service; \
+    fi && \
     rm -rf /tmp/keyd
 
-# Enable keyd via symlink
+# Enable keyd
 RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
     ln -sf /usr/lib/systemd/system/keyd.service /etc/systemd/system/multi-user.target.wants/keyd.service
 
-# Copy keyd config
+# Keyd config
 COPY configs/keyd-default.conf /etc/keyd/default.conf
 
 # Basic X11 / ratpoison setup
 # Create a simple .xinitrc or session for ratpoison
 RUN mkdir -p /etc/X11/xinit && \
     echo 'exec ratpoison' > /etc/X11/xinit/xinitrc
+
+RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
+    ln -sf /usr/lib/systemd/system/wpa_supplicant.service /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
+
+# Allow X to start from console
+RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 
 # Lint the image
 RUN bootc container lint
