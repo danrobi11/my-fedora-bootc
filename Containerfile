@@ -15,6 +15,8 @@ RUN dnf -y install \
     emacs-nw \
     bootc \
     antimicrox \
+    mpv \
+    vlc \
     conky \
     feh \
     NetworkManager-wifi \
