@@ -70,6 +70,10 @@ RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
     ln -sf /usr/lib/systemd/system/wpa_supplicant.service \
            /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
 
+# Install StevenBlack hosts file
+RUN curl -fsSL -o /etc/hosts \
+    https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+
 # Allow X to start from console
 RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 
