@@ -13,7 +13,6 @@ RUN dnf -y install \
     speed-dreams \
     texinfo \
     emacs-nw \
-    bootc \
     antimicrox \
     mpv \
     vlc \
@@ -61,7 +60,7 @@ RUN git clone https://git.savannah.nongnu.org/git/ratpoison.git /tmp/ratpoison &
     git checkout a34577dd8662d2cb3f617e187f9f60288d71ccbd && \
     ./autogen.sh && \
     ./configure --prefix=/usr --disable-debug && \
-    make -j$(nproc) V=1 && \
+    make -j$(nproc) && \
     make install && \
     rm -rf /tmp/ratpoison
 
@@ -70,28 +69,33 @@ RUN git clone --depth=1 https://github.com/rvaiya/keyd.git /tmp/keyd && \
     cd /tmp/keyd && \
     make && \
     make install && \
-    # Install the systemd unit if the Makefile didn't
+    mkdir -p /usr/lib/systemd/system && \
     if [ -f keyd.service ]; then \
         cp keyd.service /usr/lib/systemd/system/keyd.service; \
     elif [ -f scripts/keyd.service ]; then \
         cp scripts/keyd.service /usr/lib/systemd/system/keyd.service; \
+    else \
+        curl -fsSL -o /usr/lib/systemd/system/keyd.service \
+          https://raw.githubusercontent.com/rvaiya/keyd/master/keyd.service; \
     fi && \
     rm -rf /tmp/keyd
 
 # Enable keyd
 RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
-    ln -sf /usr/lib/systemd/system/keyd.service /etc/systemd/system/multi-user.target.wants/keyd.service
+    ln -sf /usr/lib/systemd/system/keyd.service \
+           /etc/systemd/system/multi-user.target.wants/keyd.service
+
+# Enable wpa_supplicant
+RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
+    ln -sf /usr/lib/systemd/system/wpa_supplicant.service \
+           /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
 
 # Keyd config
 COPY configs/keyd-default.conf /etc/keyd/default.conf
 
 # Basic X11 / ratpoison setup
-# Create a simple .xinitrc or session for ratpoison
 RUN mkdir -p /etc/X11/xinit && \
     echo 'exec ratpoison' > /etc/X11/xinit/xinitrc
-
-RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
-    ln -sf /usr/lib/systemd/system/wpa_supplicant.service /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
 
 # Allow X to start from console
 RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
