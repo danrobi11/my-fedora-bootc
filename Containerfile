@@ -13,6 +13,7 @@ RUN dnf -y install \
     speed-dreams \
     texinfo \
     emacs-nw \
+    bootc \
     antimicrox \
     conky \
     firefox \
