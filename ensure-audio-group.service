@@ -1,0 +1,12 @@
+[Unit]
+Description=Ensure danrobi is in the audio group
+After=local-fs.target
+Before=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/ensure-audio-group.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
