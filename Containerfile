@@ -70,11 +70,11 @@ COPY ensure-audio-group.service /etc/systemd/system/ensure-audio-group.service
 RUN chmod +x /usr/local/bin/ensure-audio-group.sh && \
     systemctl enable ensure-audio-group.service
 
-# Unbind lid service
-COPY unbind-lid.sh /usr/local/bin/unbind-lid.sh
-COPY unbind-lid.service /etc/systemd/system/unbind-lid.service
-RUN chmod +x /usr/local/bin/unbind-lid.sh && \
-    systemctl enable unbind-lid.service
+# Configure logind to ignore lid switch
+RUN mkdir -p /etc/systemd/logind.conf.d && \
+    printf '[Login]\nHandleLidSwitch=ignore\nHandleLidSwitchExternalPower=ignore\nHandleLidSwitchDocked=ignore\n' \
+      > /etc/systemd/logind.conf.d/ignore-lid.conf && \
+    systemctl enable systemd-logind.service
 
 # Lint the image
 RUN bootc container lint
