@@ -1,0 +1,12 @@
+[Unit]
+Description=RSSHub
+After=network-online.target
+
+[Container]
+Image=docker.io/diygod/rsshub:chromium-bundled
+PublishPort=1200:1200
+# Use the bootc-managed image store
+GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
+
+[Install]
+WantedBy=default.target
