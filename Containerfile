@@ -81,5 +81,11 @@ RUN dnf -y install nftables && \
     systemctl enable nftables.service
 COPY nftables.conf /etc/sysconfig/nftables.conf
 
+# RSSHub as a logically-bound Quadlet
+COPY rsshub.container /usr/share/containers/systemd/rsshub.container
+RUN mkdir -p /usr/lib/bootc/bound-images.d && \
+    ln -s /usr/share/containers/systemd/rsshub.container \
+          /usr/lib/bootc/bound-images.d/rsshub.container
+
 # Lint the image
 RUN bootc container lint
