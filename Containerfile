@@ -6,6 +6,9 @@ RUN dnf -y install \
     pkgconf \
     emacs-nw \
     fuse \
+    fuse-libs \
+    libxcrypt-compat \
+    libnsl \
     conky \
     feh \
     NetworkManager-wifi \
@@ -46,7 +49,7 @@ RUN dnf -y install \
 # Install custom ratpoison binary
 RUN mkdir -p /usr/local/bin && \
     curl -fsSL -o /usr/local/bin/ratpoison \
-      https://github.com/danrobi11/my-ratpoison/releases/latest/download/ratpoison && \
+    https://github.com/danrobi11/my-ratpoison/releases/latest/download/ratpoison && \
     chmod +x /usr/local/bin/ratpoison
 
 # Basic X11 / ratpoison setup
@@ -59,7 +62,7 @@ RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 # Enable wpa_supplicant
 RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
     ln -sf /usr/lib/systemd/system/wpa_supplicant.service \
-           /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
+    /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
 
 # Ensure user is in audio group on boot
 COPY ensure-audio-group.sh /usr/local/bin/ensure-audio-group.sh
