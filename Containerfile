@@ -78,10 +78,8 @@ RUN mkdir -p /etc/systemd/logind.conf.d && \
 
 # Install and configure nftables firewall (closed by default)
 RUN dnf -y install nftables && \
-    mkdir -p /etc/nftables && \
     systemctl enable nftables.service
-
-COPY nftables.conf /etc/nftables.conf
+COPY nftables.conf /etc/sysconfig/nftables.conf
 
 # Lint the image
 RUN bootc container lint
