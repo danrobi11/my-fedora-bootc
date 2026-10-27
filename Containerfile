@@ -76,5 +76,12 @@ RUN mkdir -p /etc/systemd/logind.conf.d && \
       > /etc/systemd/logind.conf.d/ignore-lid.conf && \
     systemctl enable systemd-logind.service
 
+# Install and configure nftables firewall (closed by default)
+RUN dnf -y install nftables && \
+    mkdir -p /etc/nftables && \
+    systemctl enable nftables.service
+
+COPY nftables.conf /etc/nftables.conf
+
 # Lint the image
 RUN bootc container lint
