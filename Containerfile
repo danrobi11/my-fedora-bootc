@@ -3,7 +3,6 @@ FROM quay.io/fedora/fedora-bootc:45
 # Install build dependencies and packages
 RUN dnf -y install \
     git \
-    flatpak \
     pkgconf \
     emacs-nw \
     fuse \
@@ -22,9 +21,6 @@ RUN dnf -y install \
     atk \
     at-spi2-atk \
     at-spi2-core \
-    dillo \
-    dunst \
-    firejail \
     7zip \
     pciutils \
     util-linux \
