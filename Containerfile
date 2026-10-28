@@ -10,13 +10,11 @@ RUN dnf -y install \
     fuse-libs \
     libxcrypt-compat \
     libnsl \
-    conky \
     feh \
     NetworkManager-wifi \
     wpa_supplicant \
     iw \
     wireless-regdb \
-    onionshare \
     android-tools \
     libnotify \
     glibc-langpack-en \
