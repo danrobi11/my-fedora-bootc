@@ -1,8 +1,9 @@
-FROM quay.io/fedora/fedora-bootc:45
+FROM quay.io/fedora/fedora-bootc:44
 
 # Install build dependencies and packages
 RUN dnf -y install \
     git \
+    flatpak \
     pkgconf \
     emacs-nw \
     fuse \
@@ -73,7 +74,7 @@ RUN chmod +x /usr/local/bin/ensure-audio-group.sh && \
 # Configure logind to ignore lid switch
 RUN mkdir -p /etc/systemd/logind.conf.d && \
     printf '[Login]\nHandleLidSwitch=ignore\nHandleLidSwitchExternalPower=ignore\nHandleLidSwitchDocked=ignore\n' \
-      > /etc/systemd/logind.conf.d/ignore-lid.conf && \
+    > /etc/systemd/logind.conf.d/ignore-lid.conf && \
     systemctl enable systemd-logind.service
 
 # Install and configure nftables firewall (closed by default)
