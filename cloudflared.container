@@ -1,0 +1,14 @@
+[Unit]
+Description=Cloudflared tunnel
+After=network-online.target
+
+[Container]
+Image=docker.io/cloudflare/cloudflared:latest
+# Pass your tunnel token (replace with the real one, or use an EnvironmentFile)
+Environment=TUNNEL_TOKEN=your-token-here
+# Or mount a config directory instead:
+# Volume=/etc/cloudflared:/etc/cloudflared:Z
+# Exec=tunnel run
+GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
+# cloudflared often needs host networking for tunnels
+Network=host
