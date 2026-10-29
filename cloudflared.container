@@ -5,5 +5,5 @@ After=network-online.target
 [Container]
 Image=docker.io/cloudflare/cloudflared:latest
 Network=host
-Exec=tunnel --url http://localhost:1200
+Exec=tunnel --url http://127.0.0.1:8080
 GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
