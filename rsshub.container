@@ -6,6 +6,7 @@ After=network-online.target
 Image=docker.io/diygod/rsshub:chromium-bundled
 PublishPort=1200:1200
 EnvironmentFile=/etc/rsshub/env
+Network=host
 GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
 
 # [Install]
