@@ -5,9 +5,11 @@ RUN dnf -y install \
     git \
     pkgconf \
     emacs-nw \
+    nftables \
     fuse \
     fuse-libs \
     libxcrypt-compat \
+    libxkbcommon-x11 \
     libnsl \
     feh \
     NetworkManager-wifi \
@@ -72,21 +74,20 @@ RUN mkdir -p /etc/systemd/logind.conf.d && \
     systemctl enable systemd-logind.service
 
 # Install and configure nftables firewall (closed by default)
-RUN dnf -y install nftables && \
-    systemctl enable nftables.service
+RUN systemctl enable nftables.service
 COPY nftables.conf /etc/sysconfig/nftables.conf
 
 # RSSHub as a logically-bound Quadlet
 COPY rsshub.container /usr/share/containers/systemd/rsshub.container
 RUN mkdir -p /usr/lib/bootc/bound-images.d && \
     ln -s /usr/share/containers/systemd/rsshub.container \
-          /usr/lib/bootc/bound-images.d/rsshub.container
+    /usr/lib/bootc/bound-images.d/rsshub.container
 
 # Cloudflared as a logically-bound Quadlet (manual start)
 COPY cloudflared.container /usr/share/containers/systemd/cloudflared.container
 RUN mkdir -p /usr/lib/bootc/bound-images.d && \
     ln -s /usr/share/containers/systemd/cloudflared.container \
-          /usr/lib/bootc/bound-images.d/cloudflared.container
+    /usr/lib/bootc/bound-images.d/cloudflared.container
 
 # Lint the image
 RUN bootc container lint
