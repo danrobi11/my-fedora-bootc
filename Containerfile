@@ -73,7 +73,7 @@ RUN mkdir -p /etc/systemd/logind.conf.d && \
     > /etc/systemd/logind.conf.d/ignore-lid.conf && \
     systemctl enable systemd-logind.service
 
-# Install and configure nftables firewall (closed by default)
+# Configure nftables firewall
 RUN systemctl enable nftables.service
 COPY nftables.conf /etc/sysconfig/nftables.conf
 
@@ -83,7 +83,7 @@ RUN mkdir -p /usr/lib/bootc/bound-images.d && \
     ln -s /usr/share/containers/systemd/rsshub.container \
     /usr/lib/bootc/bound-images.d/rsshub.container
 
-# Cloudflared as a logically-bound Quadlet (manual start)
+# Cloudflared as a logically-bound Quadlet
 COPY cloudflared.container /usr/share/containers/systemd/cloudflared.container
 RUN mkdir -p /usr/lib/bootc/bound-images.d && \
     ln -s /usr/share/containers/systemd/cloudflared.container \
