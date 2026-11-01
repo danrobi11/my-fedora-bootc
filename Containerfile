@@ -9,6 +9,7 @@ RUN dnf -y install \
     nftables \
     fuse \
     fuse-libs \
+    libglvnd-opengl \
     libxcrypt-compat \
     libxkbcommon-x11 \
     libnsl \
