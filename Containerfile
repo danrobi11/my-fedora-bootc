@@ -56,7 +56,7 @@ RUN dnf -y install \
     libva \
     libva-utils \
     glx-utils && \
-    && dnf clean all
+    dnf clean all
 
 # Install custom ratpoison binary
 RUN mkdir -p /usr/local/bin && \
