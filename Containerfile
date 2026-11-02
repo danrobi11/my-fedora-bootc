@@ -1,5 +1,9 @@
 FROM quay.io/fedora/fedora-bootc:45
 
+# Enable RPM Fusion free for freeworld VA-API/VDPAU drivers
+RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && \
+    dnf clean all
+
 # Install build dependencies and packages
 RUN dnf -y install \
     git \
@@ -45,9 +49,13 @@ RUN dnf -y install \
     alsa-utils \
     alsa-lib \
     mesa-dri-drivers \
+    mesa-va-drivers \
+    mesa-vdpau-drivers \
+    mesa-va-drivers-freeworld \
+    mesa-vdpau-drivers-freeworld \
     libva \
     libva-utils \
-    glx-utils \
+    glx-utils && \
     && dnf clean all
 
 # Install custom ratpoison binary
