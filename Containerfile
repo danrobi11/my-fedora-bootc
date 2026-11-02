@@ -7,6 +7,7 @@ RUN dnf -y install \
     conky \
     words \
     nftables \
+    feh \
     fuse \
     fuse-libs \
     steam-devices \
@@ -40,7 +41,6 @@ RUN dnf -y install \
     xorg-x11-xinit \
     xterm \
     xclip \
-    xwallpaper \
     xset \
     alsa-utils \
     alsa-lib \
