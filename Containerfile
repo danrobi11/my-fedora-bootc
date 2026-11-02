@@ -1,8 +1,8 @@
 FROM quay.io/fedora/fedora-bootc:45
 
 # Enable RPM Fusion free for freeworld VA-API/VDPAU drivers
-RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && \
-    dnf clean all
+# RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && \
+    # dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
@@ -51,8 +51,8 @@ RUN dnf -y install \
     mesa-dri-drivers \
     mesa-va-drivers \
     mesa-vdpau-drivers \
-    mesa-va-drivers-freeworld \
-    mesa-vdpau-drivers-freeworld \
+    # mesa-va-drivers-freeworld \
+    # mesa-vdpau-drivers-freeworld \
     libva \
     libva-utils \
     libva-vdpau-driver \
