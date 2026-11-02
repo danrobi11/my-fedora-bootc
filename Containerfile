@@ -14,7 +14,6 @@ RUN dnf -y install \
     libxcrypt-compat \
     libxkbcommon-x11 \
     libnsl \
-    feh \
     NetworkManager-wifi \
     wpa_supplicant \
     iw \
@@ -41,6 +40,7 @@ RUN dnf -y install \
     xorg-x11-xinit \
     xterm \
     xclip \
+    xwallpaper \
     xset \
     alsa-utils \
     alsa-lib \
