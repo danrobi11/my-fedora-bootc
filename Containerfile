@@ -51,8 +51,6 @@ RUN dnf -y install \
     mesa-dri-drivers \
     mesa-va-drivers \
     mesa-vdpau-drivers \
-    # mesa-va-drivers-freeworld \
-    # mesa-vdpau-drivers-freeworld \
     libva \
     libva-utils \
     libva-vdpau-driver \
