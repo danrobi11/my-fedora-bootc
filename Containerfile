@@ -50,9 +50,9 @@ RUN dnf -y install \
     alsa-lib \
     mesa-dri-drivers \
     mesa-va-drivers \
-    mesa-vdpau-drivers \
-    mesa-va-drivers-freeworld \
-    mesa-vdpau-drivers-freeworld \
+    # mesa-vdpau-drivers \
+    # mesa-va-drivers-freeworld \
+    # mesa-vdpau-drivers-freeworld \
     libva \
     libva-utils \
     glx-utils && \
