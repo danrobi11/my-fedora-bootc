@@ -1,0 +1,25 @@
+[Unit]
+Description=Jackett
+After=network-online.target
+
+[Container]
+Image=lscr.io/linuxserver/jackett:latest
+Network=host
+GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
+
+# Persist config (required)
+Volume=/var/lib/jackett/config:/config:Z
+
+# linuxserver recommended env
+Environment=PUID=1000
+Environment=PGID=1000
+Environment=TZ=America/Toronto
+Environment=AUTO_UPDATE=true
+
+# Create the directory first:
+# sudo mkdir -p /var/lib/jackett/config
+
+# [Install]
+# WantedBy=default.target
+# PublishPort=1200:1200
+# EnvironmentFile=/etc/rsshub/env
