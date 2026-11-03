@@ -3,9 +3,10 @@ Description=Emacs
 After=network-online.target
 
 [Container]
-Image=ghcr.io/danrobi11/my-emacs-fedora-docker-image:latest
-# Keep the container running so you can exec into it
-Exec=/usr/bin/sleep infinity
+Image=ghcr.io/danrobi11/emacs-fedora:latest
+Network=host
+GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
+Exec=sleep infinity
 
 # Your Emacs config
 Volume=/var/home/danrobi/.emacs.d:/root/.emacs.d:Z
@@ -16,5 +17,8 @@ Volume=/var/home:/home:Z
 # Optional: also map the usual /home symlink target if you prefer
 Volume=/var/home/danrobi:/home/danrobi:Z
 
-# [Install]
+[Service]
+Restart=on-failure
+
+[Install]
 WantedBy=default.target
