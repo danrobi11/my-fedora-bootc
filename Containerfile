@@ -115,15 +115,15 @@ COPY nftables.conf /etc/sysconfig/nftables.conf
 #     /usr/lib/bootc/bound-images.d/emacs.container
 
 # Enable linger for danrobi so rootless user services start at boot
-RUN mkdir -p /var/lib/systemd/linger && \
-    touch /var/lib/systemd/linger/danrobi
-
-# Rootless Quadlets for UID 1000
-RUN mkdir -p /etc/containers/systemd/users/1000
-# COPY emacs.container /etc/containers/systemd/users/1000/emacs.container
-COPY rsshub.container /etc/containers/systemd/users/1000/rsshub.container
-COPY cloudflared.container /etc/containers/systemd/users/1000/cloudflared.container
-COPY jackett.container /etc/containers/systemd/users/1000/jackett.container
+# RUN mkdir -p /var/lib/systemd/linger && \
+#     touch /var/lib/systemd/linger/danrobi
+# 
+# # Rootless Quadlets for UID 1000
+# RUN mkdir -p /etc/containers/systemd/users/1000
+# # COPY emacs.container /etc/containers/systemd/users/1000/emacs.container
+# COPY rsshub.container /etc/containers/systemd/users/1000/rsshub.container
+# COPY cloudflared.container /etc/containers/systemd/users/1000/cloudflared.container
+# COPY jackett.container /etc/containers/systemd/users/1000/jackett.container
 
 # Lint the image
 RUN bootc container lint
