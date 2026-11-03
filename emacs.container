@@ -5,16 +5,11 @@ After=network-online.target
 [Container]
 Image=ghcr.io/danrobi11/my-emacs-fedora-docker-image:latest
 Network=host
-# GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
 Exec=sleep infinity
+UserNS=keep-id
+Environment=HOME=/home/danrobi
+SecurityLabelDisable=true
 
-# Your Emacs config
-# Volume=/var/home/danrobi/.emacs.d:/root/.emacs.d:Z
-
-# Full access to home (so Emacs can open any file under /home)
-# Volume=/var/home:/home:Z
-
-# Optional: also map the usual /home symlink target if you prefer
 Volume=/var/home/danrobi:/home/danrobi
 
 [Service]
