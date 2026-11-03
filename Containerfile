@@ -109,5 +109,10 @@ COPY jackett.container /usr/share/containers/systemd/jackett.container
 RUN ln -s /usr/share/containers/systemd/jackett.container \
     /usr/lib/bootc/bound-images.d/jackett.container
 
+# Emacs as a logically-bound Quadlet
+COPY emacs.container /usr/share/containers/systemd/emacs.container
+RUN ln -s /usr/share/containers/systemd/emacs.container \
+    /usr/lib/bootc/bound-images.d/emacs.container
+
 # Lint the image
 RUN bootc container lint
