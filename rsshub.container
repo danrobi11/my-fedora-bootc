@@ -9,8 +9,11 @@ EnvironmentFile=/var/home/danrobi/.config/rsshub/env
 Network=host
 # GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
 
+Volume=/var/home/danrobi/.config/rsshub:/home/danrobi/.config/rsshub
+
 [Service]
 Restart=on-failure
+TimeoutStartSec=600
 
 [Install]
 WantedBy=default.target
