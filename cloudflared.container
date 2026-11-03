@@ -12,5 +12,5 @@ Exec=tunnel --url http://127.0.0.1:8080
 Restart=on-failure
 TimeoutStartSec=600
 
-[Install]
-WantedBy=default.target
+# [Install]
+# WantedBy=default.target
