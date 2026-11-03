@@ -15,10 +15,11 @@ Exec=sleep infinity
 # Volume=/var/home:/home:Z
 
 # Optional: also map the usual /home symlink target if you prefer
-Volume=/var/home/danrobi:/home/danrobi:Z
+Volume=/var/home/danrobi:/home/danrobi
 
 [Service]
 Restart=on-failure
+TimeoutStartSec=600
 
 [Install]
 WantedBy=default.target
