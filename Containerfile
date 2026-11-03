@@ -92,27 +92,31 @@ RUN systemctl enable nftables.service
 COPY nftables.conf /etc/sysconfig/nftables.conf
 
 # Create bound-images
-RUN mkdir -p /usr/lib/bootc/bound-images.d
+# RUN mkdir -p /usr/lib/bootc/bound-images.d
 
-# RSSHub as a logically-bound Quadlet
-COPY rsshub.container /usr/share/containers/systemd/rsshub.container
-RUN ln -s /usr/share/containers/systemd/rsshub.container \
-    /usr/lib/bootc/bound-images.d/rsshub.container
+# # RSSHub as a logically-bound Quadlet
+# COPY rsshub.container /usr/share/containers/systemd/rsshub.container
+# RUN ln -s /usr/share/containers/systemd/rsshub.container \
+#     /usr/lib/bootc/bound-images.d/rsshub.container
+# 
+# # Cloudflared as a logically-bound Quadlet
+# COPY cloudflared.container /usr/share/containers/systemd/cloudflared.container
+# RUN ln -s /usr/share/containers/systemd/cloudflared.container \
+#     /usr/lib/bootc/bound-images.d/cloudflared.container
+# 
+# # Jackett as a logically-bound Quadlet
+# COPY jackett.container /usr/share/containers/systemd/jackett.container
+# RUN ln -s /usr/share/containers/systemd/jackett.container \
+#     /usr/lib/bootc/bound-images.d/jackett.container
+# 
+# # Emacs as a logically-bound Quadlet
+# COPY emacs.container /usr/share/containers/systemd/emacs.container
+# RUN ln -s /usr/share/containers/systemd/emacs.container \
+#     /usr/lib/bootc/bound-images.d/emacs.container
 
-# Cloudflared as a logically-bound Quadlet
-COPY cloudflared.container /usr/share/containers/systemd/cloudflared.container
-RUN ln -s /usr/share/containers/systemd/cloudflared.container \
-    /usr/lib/bootc/bound-images.d/cloudflared.container
-
-# Jackett as a logically-bound Quadlet
-COPY jackett.container /usr/share/containers/systemd/jackett.container
-RUN ln -s /usr/share/containers/systemd/jackett.container \
-    /usr/lib/bootc/bound-images.d/jackett.container
-
-# Emacs as a logically-bound Quadlet
-COPY emacs.container /usr/share/containers/systemd/emacs.container
-RUN ln -s /usr/share/containers/systemd/emacs.container \
-    /usr/lib/bootc/bound-images.d/emacs.container
+# Enable linger for danrobi so rootless user services start at boot
+RUN mkdir -p /var/lib/systemd/linger && \
+    touch /var/lib/systemd/linger/danrobi
 
 # Lint the image
 RUN bootc container lint
