@@ -8,6 +8,9 @@ PublishPort=1200:1200
 EnvironmentFile=/var/home/danrobi/.config/rsshub/env
 Network=host
 # GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
+UserNS=keep-id
+Environment=HOME=/home/danrobi
+SecurityLabelDisable=true
 
 Volume=/var/home/danrobi/.config/rsshub:/home/danrobi/.config/rsshub
 
@@ -15,5 +18,5 @@ Volume=/var/home/danrobi/.config/rsshub:/home/danrobi/.config/rsshub
 Restart=on-failure
 TimeoutStartSec=600
 
-[Install]
-WantedBy=default.target
+# [Install]
+# WantedBy=default.target
