@@ -18,8 +18,7 @@ Environment=AUTO_UPDATE=true
 
 # Create the directory first:
 # sudo mkdir -p /var/lib/jackett/config
+# sudo chown 1000:1000 /var/lib/jackett/config
 
 # [Install]
 # WantedBy=default.target
-# PublishPort=1200:1200
-# EnvironmentFile=/etc/rsshub/env
