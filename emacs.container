@@ -3,7 +3,7 @@ Description=Emacs
 After=network-online.target
 
 [Container]
-Image=ghcr.io/danrobi11/emacs-fedora:latest
+Image=ghcr.io/danrobi11/my-emacs-fedora-docker-image:latest
 Network=host
 GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
 Exec=sleep infinity
