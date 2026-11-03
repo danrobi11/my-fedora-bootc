@@ -15,8 +15,8 @@ Environment=AUTO_UPDATE=true
 Restart=on-failure
 TimeoutStartSec=600
 
-[Install]
-WantedBy=default.target
+# [Install]
+# WantedBy=default.target
 
 # Create the directory first:
 # mkdir -p ~/.local/share/jackett
