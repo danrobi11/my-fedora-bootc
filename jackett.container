@@ -5,12 +5,7 @@ After=network-online.target
 [Container]
 Image=lscr.io/linuxserver/jackett:latest
 Network=host
-# GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
-
-# Persist config (required)
-Volume=/var/home/danrobi/.local/share/jackett:/config:Z
-
-# linuxserver recommended env
+Volume=/var/home/danrobi/.local/share/jackett:/config
 Environment=PUID=1000
 Environment=PGID=1000
 Environment=TZ=America/Toronto
@@ -18,6 +13,7 @@ Environment=AUTO_UPDATE=true
 
 [Service]
 Restart=on-failure
+TimeoutStartSec=600
 
 [Install]
 WantedBy=default.target
