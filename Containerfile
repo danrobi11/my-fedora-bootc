@@ -120,7 +120,7 @@ RUN mkdir -p /var/lib/systemd/linger && \
 
 # Rootless Quadlets for UID 1000
 RUN mkdir -p /etc/containers/systemd/users/1000
-COPY emacs.container /etc/containers/systemd/users/1000/emacs.container
+# COPY emacs.container /etc/containers/systemd/users/1000/emacs.container
 COPY rsshub.container /etc/containers/systemd/users/1000/rsshub.container
 COPY cloudflared.container /etc/containers/systemd/users/1000/cloudflared.container
 COPY jackett.container /etc/containers/systemd/users/1000/jackett.container
