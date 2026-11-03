@@ -5,9 +5,12 @@ After=network-online.target
 [Container]
 Image=docker.io/diygod/rsshub:chromium-bundled
 PublishPort=1200:1200
-EnvironmentFile=/etc/rsshub/env
+EnvironmentFile=/var/home/danrobi/.config/rsshub/env
 Network=host
-GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
+# GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
 
-# [Install]
-# WantedBy=default.target
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
