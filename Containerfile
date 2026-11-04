@@ -21,7 +21,7 @@ RUN dnf -y install \
     flatpak \
 
     # lib for torrent digger
-    webkit2gtk4.1 \
+    # webkit2gtk4.1 \
 
     libnsl \
     NetworkManager-wifi \
@@ -31,10 +31,13 @@ RUN dnf -y install \
     android-tools \
     libnotify \
     glibc-langpack-en \
-    gtk3 \
-    atk \
-    at-spi2-atk \
-    at-spi2-core \
+
+    # browsers
+    # gtk3 \
+    # atk \
+    # at-spi2-atk \
+    # at-spi2-core \
+
     7zip \
     pciutils \
     util-linux \
@@ -57,14 +60,14 @@ RUN dnf -y install \
     alsa-lib \
 
     # lib for q3rally
-    sdl2-compat \
+    # sdl2-compat \
 
-    mesa-dri-drivers \
-    mesa-va-drivers \
-    # mesa-va-drivers-freeworld \
-    libva \
-    libva-utils \
-    glx-utils \
+    # videos
+    # mesa-dri-drivers \
+    # mesa-va-drivers \
+    # libva \
+    # libva-utils \
+    # glx-utils \
     && dnf clean all
 
 # Install custom ratpoison binary
