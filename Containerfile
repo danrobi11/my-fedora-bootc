@@ -15,10 +15,12 @@ RUN dnf -y install \
     fuse \
     fuse-libs \
     steam-devices \
-    libglvnd-opengl \
-    libxcrypt-compat \
-    libxkbcommon-x11 \
     flatpak \
+
+    # for who
+    # libglvnd-opengl \
+    # libxcrypt-compat \
+    # libxkbcommon-x11 \
 
     # lib for torrent digger
     # webkit2gtk4.1 \
