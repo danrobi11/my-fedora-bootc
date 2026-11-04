@@ -18,6 +18,7 @@ RUN dnf -y install \
     libglvnd-opengl \
     libxcrypt-compat \
     libxkbcommon-x11 \
+    webkit2gtk4.1 \
     libnsl \
     NetworkManager-wifi \
     wpa_supplicant \
