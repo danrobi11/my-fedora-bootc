@@ -18,6 +18,7 @@ RUN dnf -y install \
     libglvnd-opengl \
     libxcrypt-compat \
     libxkbcommon-x11 \
+    flatpak \
 
     # lib for torrent digger
     webkit2gtk4.1 \
