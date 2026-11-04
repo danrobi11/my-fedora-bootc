@@ -55,7 +55,7 @@ RUN dnf -y install \
     alsa-lib \
 
     # lib for q3rally
-    sdl2-compat
+    sdl2-compat \
 
     mesa-dri-drivers \
     mesa-va-drivers \
