@@ -52,6 +52,7 @@ RUN dnf -y install \
     alacritty \
     xclip \
     xset \
+    xrandr \
     alsa-utils \
     alsa-lib \
 
