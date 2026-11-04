@@ -18,7 +18,10 @@ RUN dnf -y install \
     libglvnd-opengl \
     libxcrypt-compat \
     libxkbcommon-x11 \
+
+    # lib for torrent digger
     webkit2gtk4.1 \
+
     libnsl \
     NetworkManager-wifi \
     wpa_supplicant \
@@ -50,6 +53,10 @@ RUN dnf -y install \
     xset \
     alsa-utils \
     alsa-lib \
+
+    # lib for q3rally
+    sdl2-compat
+
     mesa-dri-drivers \
     mesa-va-drivers \
     # mesa-va-drivers-freeworld \
