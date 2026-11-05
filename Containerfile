@@ -75,15 +75,15 @@ RUN dnf -y install \
     # glx-utils \
     && dnf clean all
 
-# Install custom ratpoison binary
-RUN mkdir -p /usr/local/bin && \
-    curl -fsSL -o /usr/local/bin/ratpoison \
-    https://github.com/danrobi11/my-ratpoison/releases/latest/download/ratpoison && \
-    chmod +x /usr/local/bin/ratpoison
-
-# Basic X11 / ratpoison setup
-RUN mkdir -p /etc/X11/xinit && \
-    echo 'exec ratpoison' > /etc/X11/xinit/xinitrc
+# # Install custom ratpoison binary
+# RUN mkdir -p /usr/local/bin && \
+#     curl -fsSL -o /usr/local/bin/ratpoison \
+#     https://github.com/danrobi11/my-ratpoison/releases/latest/download/ratpoison && \
+#     chmod +x /usr/local/bin/ratpoison
+# 
+# # Basic X11 / ratpoison setup
+# RUN mkdir -p /etc/X11/xinit && \
+#     echo 'exec ratpoison' > /etc/X11/xinit/xinitrc
 
 # Allow X to start from console
 RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
