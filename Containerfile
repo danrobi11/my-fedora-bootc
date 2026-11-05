@@ -17,15 +17,15 @@ RUN dnf -y install \
     steam-devices \
     flatpak \
 
-    # for who
+    # for who?
     # libglvnd-opengl \
     # libxcrypt-compat \
     # libxkbcommon-x11 \
+    # libnsl \
 
     # lib for torrent digger
     # webkit2gtk4.1 \
 
-    libnsl \
     NetworkManager-wifi \
     wpa_supplicant \
     iw \
@@ -48,13 +48,16 @@ RUN dnf -y install \
     sudo \
     which \
     jq \
+
+    # for ratpoison
     libXtst \
+
     scrot \
     dmenu \
     xorg-x11-server-Xorg \
     xorg-x11-xinit \
     xterm \
-    alacritty \
+    # alacritty \
     xclip \
     xset \
     xrandr \
