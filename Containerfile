@@ -88,6 +88,9 @@ RUN dnf -y install \
 # Allow X to start from console
 RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 
+# Disable automatic bootc updates/reboots
+RUN systemctl mask bootc-fetch-apply-updates.timer
+
 # Enable wpa_supplicant
 RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
     ln -sf /usr/lib/systemd/system/wpa_supplicant.service \
