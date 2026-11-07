@@ -1,8 +1,7 @@
 FROM quay.io/fedora/fedora-bootc:45
 
-# Enable RPM Fusion free for freeworld VA-API/VDPAU drivers
-# RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-    # && dnf clean all
+# Enable RPM Fusion free
+# RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
@@ -18,10 +17,12 @@ RUN dnf -y install \
     flatpak \
 
     # for who?
-    # libglvnd-opengl \
     # libxcrypt-compat \
     # libxkbcommon-x11 \
     # libnsl \
+
+    # for antimicrox
+    libglvnd-opengl \
 
     # lib for torrent digger
     # webkit2gtk4.1 \
