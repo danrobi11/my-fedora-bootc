@@ -119,17 +119,17 @@ RUN systemctl enable nftables.service
 COPY nftables.conf /etc/sysconfig/nftables.conf
 
 # Create bound-images
-RUN mkdir -p /usr/lib/bootc/bound-images.d
+# RUN mkdir -p /usr/lib/bootc/bound-images.d
 
 # # RSSHub as a logically-bound Quadlet
-COPY rsshub.container /usr/share/containers/systemd/rsshub.container
-RUN ln -s /usr/share/containers/systemd/rsshub.container \
-    /usr/lib/bootc/bound-images.d/rsshub.container
+# COPY rsshub.container /usr/share/containers/systemd/rsshub.container
+# RUN ln -s /usr/share/containers/systemd/rsshub.container \
+    # /usr/lib/bootc/bound-images.d/rsshub.container
 
 # # Cloudflared as a logically-bound Quadlet
-COPY cloudflared.container /usr/share/containers/systemd/cloudflared.container
-RUN ln -s /usr/share/containers/systemd/cloudflared.container \
-    /usr/lib/bootc/bound-images.d/cloudflared.container
+# COPY cloudflared.container /usr/share/containers/systemd/cloudflared.container
+# RUN ln -s /usr/share/containers/systemd/cloudflared.container \
+    # /usr/lib/bootc/bound-images.d/cloudflared.container
 
 # # Jackett as a logically-bound Quadlet
 # COPY jackett.container /usr/share/containers/systemd/jackett.container
