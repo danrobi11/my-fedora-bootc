@@ -3,7 +3,7 @@ Description=RSSHub
 After=network-online.target
 
 [Container]
-Image=docker.io/diygod/rsshub:chromium-bundled
+Image=docker.io/diygod/rsshub:latest
 PublishPort=1200:1200
 EnvironmentFile=/etc/rsshub/env
 # EnvironmentFile=/var/home/danrobi/.config/rsshub/env
