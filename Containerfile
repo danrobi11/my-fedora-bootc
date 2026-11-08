@@ -80,7 +80,7 @@ RUN dnf -y install \
     # glx-utils \
     && dnf clean all
 
-RUN dnf -y remove pipewire-libs pulseaudio-libs libcanberra-backend-pulse flatpak-session-helper xdg-desktop-portal geoclue2 localsearch tinysparql sssd-ad sssd-client sssd-common sssd-ipa sssd-krb5 sssd-ldap adcli bluez-libs cups-filesystem cups-libs pipewire wireplumber pipewire-pulseaudio pipewire-alsa && dnf clean all
+RUN dnf -y remove pipewire-libs pulseaudio-libs libcanberra-backend-pulse flatpak-session-helper xdg-desktop-portal geoclue2 localsearch tinysparql sssd-ad sssd-client sssd-common sssd-ipa sssd-krb5 sssd-ldap adcli bluez-libs cups-filesystem cups-libs nvidia-gpu-firmware nvme-cli pipewire wireplumber pipewire-pulseaudio pipewire-alsa && dnf clean all
 
 # # Install custom ratpoison binary
 # RUN mkdir -p /usr/local/bin && \
