@@ -1,4 +1,4 @@
-FROM quay.io/bootc-devel/fedora-bootc-45-minimal:20260928-213426
+FROM quay.io/bootc-devel/fedora-bootc-45-minimal-plus:20260928-213532
 # FROM quay.io/fedora/fedora-bootc:45
 
 # Enable RPM Fusion free
