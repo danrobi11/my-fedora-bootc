@@ -13,8 +13,8 @@ RUN dnf -y install \
     feh \
     fuse \
     fuse-libs \
-    steam-devices \
-    flatpak \
+    # steam-devices \
+    # flatpak \
 
     # for who?
     # libxcrypt-compat \
@@ -40,11 +40,10 @@ RUN dnf -y install \
     libnotify \
     glibc-langpack-en \
 
-    # browsers
-    # gtk3 \
-    # atk \
-    # at-spi2-atk \
-    # at-spi2-core \
+    # For Browsers
+    gtk3 \
+    atk \
+    at-spi2-atk \
 
     7zip \
     pciutils \
@@ -144,7 +143,7 @@ COPY nftables.conf /etc/sysconfig/nftables.conf
 # Enable linger for danrobi so rootless user services start at boot
 # RUN mkdir -p /var/lib/systemd/linger && \
 #     touch /var/lib/systemd/linger/danrobi
-# 
+
 # # Rootless Quadlets for UID 1000
 # RUN mkdir -p /etc/containers/systemd/users/1000
 # # COPY emacs.container /etc/containers/systemd/users/1000/emacs.container
