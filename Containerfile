@@ -1,4 +1,5 @@
-FROM quay.io/fedora/fedora-bootc:45
+FROM quay.io/fedora/fedora-bootc:45-minimal
+# FROM quay.io/fedora/fedora-bootc:45
 
 # Enable RPM Fusion free
 # RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && dnf clean all
@@ -80,7 +81,7 @@ RUN dnf -y install \
     # glx-utils \
     && dnf clean all
 
-RUN dnf -y remove pipewire wireplumber pipewire-pulseaudio pipewire-alsa && dnf clean all
+# RUN dnf -y remove pipewire wireplumber pipewire-pulseaudio pipewire-alsa && dnf clean all
 
 # # Install custom ratpoison binary
 # RUN mkdir -p /usr/local/bin && \
