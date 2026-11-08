@@ -18,8 +18,13 @@ RUN dnf -y install \
 
     # for who?
     # libxcrypt-compat \
-    # libxkbcommon-x11 \
     # libnsl \
+
+    # for neomacs
+    libxkbcommon-x11 \
+
+    # for cpak
+    # xorg-x11-server-Xephyr \
 
     # for antimicrox
     libglvnd-opengl \
