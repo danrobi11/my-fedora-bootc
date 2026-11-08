@@ -7,7 +7,7 @@ FROM quay.io/fedora/fedora-bootc:45
 RUN dnf -y install \
     git \
     pkgconf \
-    conky \
+    # conky \
     words \
     nftables \
     feh \
@@ -80,7 +80,7 @@ RUN dnf -y install \
     # glx-utils \
     && dnf clean all
 
-RUN dnf -y remove net-tools pipewire-libs pulseaudio-libs libcanberra-backend-pulse flatpak-session-helper xdg-desktop-portal geoclue2 localsearch tinysparql sssd-ad sssd-client sssd-common sssd-ipa sssd-krb5 sssd-ldap adcli bluez-libs nvidia-gpu-firmware nvme-cli pipewire wireplumber pipewire-pulseaudio pipewire-alsa && dnf clean all
+RUN dnf -y remove adobe-mappings-cmap adobe-mappings-cmap-deprecated adobe-mappings-pdf atheros-firmware bubblewrap net-tools pipewire-libs pulseaudio-libs libcanberra-backend-pulse flatpak-session-helper xdg-desktop-portal geoclue2 localsearch tinysparql sssd-ad sssd-client sssd-common sssd-ipa sssd-krb5 sssd-ldap adcli bluez-libs nvidia-gpu-firmware nvme-cli pipewire wireplumber pipewire-pulseaudio pipewire-alsa && dnf clean all
 
 # cups-libs cups-filesystem
 
