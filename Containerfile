@@ -80,6 +80,8 @@ RUN dnf -y install \
     # glx-utils \
     && dnf clean all
 
+RUN dnf -y remove pipewire wireplumber pipewire-pulseaudio pipewire-alsa && dnf clean all
+
 # # Install custom ratpoison binary
 # RUN mkdir -p /usr/local/bin && \
 #     curl -fsSL -o /usr/local/bin/ratpoison \
