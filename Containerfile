@@ -13,8 +13,6 @@ RUN dnf -y remove \
     geoclue2 \
     libcloudproviders \
     localsearch \
-    abseil-cpp \
-    # here
     tinysparql \
     libtinysparql \
     sssd-ad \
@@ -24,6 +22,8 @@ RUN dnf -y remove \
     sssd-krb5 \
     sssd-ldap \
     adcli \
+    adcli-selinux \
+    # here
     harfbuzz \
     cirrus-audio-firmware \
     fribidi \
@@ -61,8 +61,10 @@ RUN dnf -y remove \
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=harfbuzz \
+    --exclude=tinysparql \
+    --exclude=libtinysparql \
     --exclude=libcloudproviders \
-    --exclude=abseil-cpp \
     --exclude=pulseaudio-libs \
     --exclude=flatpak-session-helper \
     --exclude=gstreamer1 \
@@ -166,6 +168,7 @@ RUN dnf -y install \
     cups-filesystem \
     aardvark-dns \
     podman \
+    abseil-cpp \
     && dnf clean all
 
 # Needed libs
