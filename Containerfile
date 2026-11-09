@@ -81,7 +81,50 @@ RUN dnf -y install \
     # glx-utils \
     && dnf clean all
 
-RUN dnf -y remove adobe-mappings-cmap adobe-mappings-cmap-deprecated adobe-mappings-pdf atheros-firmware net-tools pipewire-libs pulseaudio-libs libcanberra-backend-pulse flatpak-session-helper xdg-desktop-portal geoclue2 localsearch tinysparql sssd-ad sssd-client sssd-common sssd-ipa sssd-krb5 sssd-ldap adcli bluez-libs nvidia-gpu-firmware nvme-cli pipewire wireplumber pipewire-pulseaudio pipewire-alsa && dnf clean all
+RUN dnf -y remove \
+    adobe-mappings-cmap \
+    adobe-mappings-cmap-deprecated \
+    adobe-mappings-pdf \
+    atheros-firmware \
+    net-tools \
+    pipewire-libs \
+    pulseaudio-libs \
+    libcanberra-backend-pulse \
+    flatpak-session-helper \
+    xdg-desktop-portal \
+    geoclue2 \
+    libcloudproviders \
+    localsearch \
+    tinysparql \
+    sssd-ad \
+    sssd-client \
+    sssd-common \
+    sssd-ipa \
+    sssd-krb5 \
+    sssd-ldap \
+    adcli \
+    gstreamer1 \
+    harfbuzz \
+    cirrus-audio-firmware \
+    fribidi \
+    intel-audio-firmware \
+    intel-gpu-firmware \
+    intel-mediasdk \
+    intel-npu-firmware \
+    intel-vpl-gpu-rt \
+    gsettings-desktop-schemas \
+    bluez-libs \
+    nvidia-gpu-firmware \
+    libaribcaption \
+    tiwilink-firmware \
+    vim-data \
+    vim-minimal \
+    nvme-cli \
+    pipewire \
+    wireplumber \
+    pipewire-pulseaudio \
+    pipewire-alsa \
+    && dnf clean all
 
 # Needed libs
 # cups-libs cups-filesystem bubblewrap
