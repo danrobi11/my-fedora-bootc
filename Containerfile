@@ -4,7 +4,6 @@ FROM quay.io/fedora/fedora-bootc:45
 # RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && dnf clean all
 
 RUN dnf -y remove \
-    aardvark-dns \
     adobe-mappings-cmap \
     adobe-mappings-cmap-deprecated \
     adobe-mappings-pdf \
@@ -14,6 +13,7 @@ RUN dnf -y remove \
     geoclue2 \
     libcloudproviders \
     localsearch \
+    abseil-cpp \
     # here
     tinysparql \
     libtinysparql \
@@ -27,10 +27,8 @@ RUN dnf -y remove \
     harfbuzz \
     cirrus-audio-firmware \
     fribidi \
-    intel-vpl-gpu-rt \
     intel-audio-firmware \
     intel-gpu-firmware \
-    intel-mediasdk \
     intel-npu-firmware \
     nvidia-gpu-firmware \
     libaribcaption \
@@ -38,9 +36,7 @@ RUN dnf -y remove \
     vim-data \
     vim-minimal \
     nvme-cli \
-    pipewire-libs \
     pulseaudio-libs \
-    libcanberra-backend-pulse \
     flatpak-session-helper \
     gstreamer1 \
     gstreamer1-plugins-base \
@@ -61,17 +57,13 @@ RUN dnf -y remove \
     pipewire-plugin-libcamera \
     pipewire-pulseaudio \
     pipewire-alsa \
-    abseil-cpp \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
     --exclude=libcloudproviders \
     --exclude=abseil-cpp \
-    --exclude=aardvark-dns \
-    --exclude=pipewire-libs \
     --exclude=pulseaudio-libs \
-    --exclude=libcanberra-backend-pulse \
     --exclude=flatpak-session-helper \
     --exclude=gstreamer1 \
     --exclude=gstreamer1-plugins-base \
@@ -121,6 +113,7 @@ RUN dnf -y install \
 
     bootc \
     bubblewrap \
+    containers-common-extra \
     NetworkManager-wifi \
     wpa_supplicant \
     iw \
@@ -171,6 +164,8 @@ RUN dnf -y install \
     gsettings-desktop-schemas \
     cups-libs \
     cups-filesystem \
+    aardvark-dns \
+    podman \
     && dnf clean all
 
 # Needed libs
