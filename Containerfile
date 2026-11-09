@@ -54,19 +54,10 @@ RUN dnf -y remove \
     brcmfmac-firmware \
     # here
     cloud-utils-growpart \
-    crypto-policies \
-    crypto-policies-scripts \
-    cryptsetup \
-    cryptsetup-libs \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
-    --exclude=cloud-utils-growpart \
-    --exclude=crypto-policies \
-    --exclude=crypto-policies-scripts \
-    --exclude=cryptsetup \
-    --exclude=cryptsetup-libs \
     --exclude=cloud-utils-growpart \
     --exclude=libaribcaption \
     --exclude=libcloudproviders \
@@ -177,6 +168,10 @@ RUN dnf -y install \
     fribidi \
     tinysparql \
     libtinysparql \
+    crypto-policies \
+    crypto-policies-scripts \
+    cryptsetup \
+    cryptsetup-libs \
     && dnf clean all
 
 # Needed libs
