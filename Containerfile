@@ -13,8 +13,6 @@ RUN dnf -y remove \
     geoclue2 \
     libcloudproviders \
     localsearch \
-    tinysparql \
-    libtinysparql \
     sssd-ad \
     sssd-client \
     sssd-common \
@@ -53,16 +51,24 @@ RUN dnf -y remove \
     libaribcaption \
     vim-data \
     vim-minimal \
+    brcmfmac-firmware \
     # here
     cloud-utils-growpart \
+    crypto-policies \
+    crypto-policies-scripts \
+    cryptsetup \
+    cryptsetup-libs \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
     --exclude=cloud-utils-growpart \
+    --exclude=crypto-policies \
+    --exclude=crypto-policies-scripts \
+    --exclude=cryptsetup \
+    --exclude=cryptsetup-libs \
+    --exclude=cloud-utils-growpart \
     --exclude=libaribcaption \
-    --exclude=tinysparql \
-    --exclude=libtinysparql \
     --exclude=libcloudproviders \
     --exclude=pulseaudio-libs \
     --exclude=flatpak-session-helper \
@@ -169,6 +175,8 @@ RUN dnf -y install \
     podman \
     abseil-cpp \
     fribidi \
+    tinysparql \
+    libtinysparql \
     && dnf clean all
 
 # Needed libs
