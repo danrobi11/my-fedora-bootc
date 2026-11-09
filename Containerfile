@@ -24,26 +24,9 @@ RUN dnf -y remove \
     adcli \
     adcli-selinux \
     cirrus-audio-firmware \
-    fribidi \
     intel-audio-firmware \
     intel-gpu-firmware \
     intel-npu-firmware \
-    nvidia-gpu-firmware \
-    libaribcaption \
-    # here
-    tiwilink-firmware \
-    vim-data \
-    vim-minimal \
-    nvme-cli \
-    pulseaudio-libs \
-    flatpak-session-helper \
-    gstreamer1 \
-    gstreamer1-plugins-base \
-    libcanberra \
-    libcanberra-backend-alsa \
-    libcanberra-backend-gstreamer \
-    libcanberra-backend-pulse \
-    libcanberra-gtk3 \
     intel-mediasdk \
     intel-vpl-gpu-rt \
     bluez-libs \
@@ -56,12 +39,28 @@ RUN dnf -y remove \
     pipewire-plugin-libcamera \
     pipewire-pulseaudio \
     pipewire-alsa \
+    pulseaudio-libs \
+    nvidia-gpu-firmware \
+    gstreamer1 \
+    gstreamer1-plugins-base \
+    flatpak-session-helper \
+    libcanberra \
+    libcanberra-backend-alsa \
+    libcanberra-backend-gstreamer \
+    libcanberra-backend-pulse \
+    libcanberra-gtk3 \
+    tiwilink-firmware \
+    libaribcaption \
+    vim-data \
+    vim-minimal \
+    # here
+    cloud-utils-growpart \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=cloud-utils-growpart \
     --exclude=libaribcaption \
-    --exclude=fribidi \
     --exclude=tinysparql \
     --exclude=libtinysparql \
     --exclude=libcloudproviders \
@@ -169,6 +168,7 @@ RUN dnf -y install \
     aardvark-dns \
     podman \
     abseil-cpp \
+    fribidi \
     && dnf clean all
 
 # Needed libs
