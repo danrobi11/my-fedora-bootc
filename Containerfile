@@ -69,10 +69,14 @@ RUN dnf -y remove \
     libqrtr-glib \
     'qemu-user-static*' \
     'nfs*' \
+    'avahi*' \
+    fstrm \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=fstrm \
+    --exclude='avahi*' \
     --exclude='nfs*' \
     --exclude='qemu-user-static*' \
     --exclude=libqrtr-glib \
