@@ -9,10 +9,6 @@ RUN dnf -y remove \
     adobe-mappings-pdf \
     atheros-firmware \
     net-tools \
-    pipewire-libs \
-    pulseaudio-libs \
-    libcanberra-backend-pulse \
-    flatpak-session-helper \
     xdg-desktop-portal \
     geoclue2 \
     libcloudproviders \
@@ -25,44 +21,48 @@ RUN dnf -y remove \
     sssd-krb5 \
     sssd-ldap \
     adcli \
-    gstreamer1 \
-    gstreamer1-plugins-base \
-    libcanberra \
-    libcanberra-backend-alsa \
-    libcanberra-backend-gstreamer \
-    libcanberra-backend-pulse \
-    libcanberra-gtk3 \
     harfbuzz \
     cirrus-audio-firmware \
     fribidi \
-    intel-mediasdk \
     intel-vpl-gpu-rt \
     intel-audio-firmware \
     intel-gpu-firmware \
     intel-mediasdk \
     intel-npu-firmware \
-    intel-vpl-gpu-rt \
-    gsettings-desktop-schemas \
-    bluez-libs \
     nvidia-gpu-firmware \
     libaribcaption \
     tiwilink-firmware \
     vim-data \
     vim-minimal \
     nvme-cli \
-    pipewire \
-    wireplumber \
-    wireplumber-libs \
-    pipewire-jack-audio-connection-kit \
-    pipewire-jack-audio-connection-kit-libs \
-    pipewire-libs \
-    pipewire-plugin-libcamera \
-    pipewire-pulseaudio \
-    pipewire-alsa \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=pipewire-libs \
+    --exclude=pulseaudio-libs \
+    --exclude=libcanberra-backend-pulse \
+    --exclude=flatpak-session-helper \
+    --exclude=gstreamer1 \
+    --exclude=gstreamer1-plugins-base \
+    --exclude=libcanberra \
+    --exclude=libcanberra-backend-alsa \
+    --exclude=libcanberra-backend-gstreamer \
+    --exclude=libcanberra-backend-pulse \
+    --exclude=libcanberra-gtk3 \
+    --exclude=intel-mediasdk \
+    --exclude=intel-vpl-gpu-rt \
+    --exclude=gsettings-desktop-schemas \
+    --exclude=bluez-libs \
+    --exclude=pipewire \
+    --exclude=wireplumber \
+    --exclude=wireplumber-libs \
+    --exclude=pipewire-jack-audio-connection-kit \
+    --exclude=pipewire-jack-audio-connection-kit-libs \
+    --exclude=pipewire-libs \
+    --exclude=pipewire-plugin-libcamera \
+    --exclude=pipewire-pulseaudio \
+    --exclude=pipewire-alsa \
     git \
     pkgconf \
     # conky \
