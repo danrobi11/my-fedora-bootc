@@ -10,7 +10,7 @@ RUN dnf -y install \
     # conky \
     words \
     nftables \
-    feh \
+    # feh \
     fuse \
     fuse-libs \
     # steam-devices \
@@ -21,13 +21,13 @@ RUN dnf -y install \
     # libnsl \
 
     # for neomacs
-    libxkbcommon-x11 \
+    # libxkbcommon-x11 \
 
     # for cpak
     # xorg-x11-server-Xephyr \
 
     # for antimicrox
-    libglvnd-opengl \
+    # libglvnd-opengl \
 
     # lib for torrent digger
     # webkit2gtk4.1 \
@@ -44,6 +44,7 @@ RUN dnf -y install \
     gtk3 \
     atk \
     at-spi2-atk \
+    google-noto-emoji-color-fonts \
 
     7zip \
     pciutils \
@@ -57,7 +58,7 @@ RUN dnf -y install \
     # for ratpoison
     libXtst \
 
-    scrot \
+    # scrot \
     dmenu \
     xorg-x11-server-Xorg \
     xorg-x11-xinit \
@@ -82,7 +83,8 @@ RUN dnf -y install \
 
 RUN dnf -y remove adobe-mappings-cmap adobe-mappings-cmap-deprecated adobe-mappings-pdf atheros-firmware net-tools pipewire-libs pulseaudio-libs libcanberra-backend-pulse flatpak-session-helper xdg-desktop-portal geoclue2 localsearch tinysparql sssd-ad sssd-client sssd-common sssd-ipa sssd-krb5 sssd-ldap adcli bluez-libs nvidia-gpu-firmware nvme-cli pipewire wireplumber pipewire-pulseaudio pipewire-alsa && dnf clean all
 
-# cups-libs cups-filesystem
+# Needed libs
+# cups-libs cups-filesystem bubblewrap
 
 # # Install custom ratpoison binary
 # RUN mkdir -p /usr/local/bin && \
