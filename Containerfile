@@ -26,9 +26,17 @@ RUN dnf -y remove \
     sssd-ldap \
     adcli \
     gstreamer1 \
+    gstreamer1-plugins-base \
+    libcanberra \
+    libcanberra-backend-alsa \
+    libcanberra-backend-gstreamer \
+    libcanberra-backend-pulse \
+    libcanberra-gtk3 \
     harfbuzz \
     cirrus-audio-firmware \
     fribidi \
+    intel-mediasdk \
+    intel-vpl-gpu-rt \
     intel-audio-firmware \
     intel-gpu-firmware \
     intel-mediasdk \
@@ -44,6 +52,11 @@ RUN dnf -y remove \
     nvme-cli \
     pipewire \
     wireplumber \
+    wireplumber-libs \
+    pipewire-jack-audio-connection-kit \
+    pipewire-jack-audio-connection-kit-libs \
+    pipewire-libs \
+    pipewire-plugin-libcamera \
     pipewire-pulseaudio \
     pipewire-alsa \
     && dnf clean all
