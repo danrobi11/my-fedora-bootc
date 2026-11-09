@@ -20,10 +20,6 @@ RUN dnf -y remove \
     sssd-ldap \
     adcli \
     adcli-selinux \
-    cirrus-audio-firmware \
-    intel-audio-firmware \
-    intel-gpu-firmware \
-    intel-npu-firmware \
     intel-mediasdk \
     intel-vpl-gpu-rt \
     bluez-libs \
@@ -37,7 +33,6 @@ RUN dnf -y remove \
     pipewire-pulseaudio \
     pipewire-alsa \
     pulseaudio-libs \
-    nvidia-gpu-firmware \
     gstreamer1 \
     gstreamer1-plugins-base \
     flatpak-session-helper \
@@ -50,10 +45,15 @@ RUN dnf -y remove \
     libaribcaption \
     vim-data \
     vim-minimal \
+    nvidia-gpu-firmware \
     mt7xxx-firmware \
     brcmfmac-firmware \
     nxpwireless-firmware \
     qcom-wwan-firmware \
+    cirrus-audio-firmware \
+    intel-audio-firmware \
+    intel-gpu-firmware \
+    intel-npu-firmware \
     cloud-utils-growpart \
     libsmbclient \
     samba-client-libs \
@@ -68,10 +68,12 @@ RUN dnf -y remove \
     pam \
     pam-libs \
     systemd-pam \
+    libpwquality \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=libpwquality \
     --exclude=systemd-pam \
     --exclude=pam \
     --exclude=pam-libs \
