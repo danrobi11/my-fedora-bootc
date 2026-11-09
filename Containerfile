@@ -11,7 +11,6 @@ RUN dnf -y remove \
     net-tools \
     xdg-desktop-portal \
     geoclue2 \
-    libcloudproviders \
     localsearch \
     sssd-ad \
     sssd-client \
@@ -60,7 +59,6 @@ RUN dnf -y remove \
 RUN dnf -y install \
     --exclude=cloud-utils-growpart \
     --exclude=libaribcaption \
-    --exclude=libcloudproviders \
     --exclude=pulseaudio-libs \
     --exclude=flatpak-session-helper \
     --exclude=gstreamer1 \
@@ -172,6 +170,7 @@ RUN dnf -y install \
     crypto-policies-scripts \
     cryptsetup \
     cryptsetup-libs \
+    libcloudproviders \
     && dnf clean all
 
 # Needed libs
