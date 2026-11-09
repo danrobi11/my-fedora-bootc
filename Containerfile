@@ -50,13 +50,26 @@ RUN dnf -y remove \
     libaribcaption \
     vim-data \
     vim-minimal \
+    mt7xxx-firmware \
     brcmfmac-firmware \
-    # here
+    nxpwireless-firmware \
+    qcom-wwan-firmware \
     cloud-utils-growpart \
+    # here
+    libsmbclient \
+    samba-client-libs \
+    samba-common \
+    samba-core-libs \
+    samba-ndr-libs \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=samba-client-libs \
+    --exclude=samba-common \
+    --exclude=samba-core-libs \
+    --exclude=samba-ndr-libs \
+    --exclude=libsmbclient \
     --exclude=cloud-utils-growpart \
     --exclude=libaribcaption \
     --exclude=pulseaudio-libs \
@@ -172,9 +185,6 @@ RUN dnf -y install \
     cryptsetup-libs \
     libcloudproviders \
     && dnf clean all
-
-# Needed libs
-#
 
 # # Install custom ratpoison binary
 # RUN mkdir -p /usr/local/bin && \
