@@ -35,6 +35,30 @@ RUN dnf -y remove \
     vim-data \
     vim-minimal \
     nvme-cli \
+    pipewire-libs \
+    pulseaudio-libs \
+    libcanberra-backend-pulse \
+    flatpak-session-helper \
+    gstreamer1 \
+    gstreamer1-plugins-base \
+    libcanberra \
+    libcanberra-backend-alsa \
+    libcanberra-backend-gstreamer \
+    libcanberra-backend-pulse \
+    libcanberra-gtk3 \
+    intel-mediasdk \
+    intel-vpl-gpu-rt \
+    gsettings-desktop-schemas \
+    bluez-libs \
+    pipewire \
+    wireplumber \
+    wireplumber-libs \
+    pipewire-jack-audio-connection-kit \
+    pipewire-jack-audio-connection-kit-libs \
+    pipewire-libs \
+    pipewire-plugin-libcamera \
+    pipewire-pulseaudio \
+    pipewire-alsa \
     && dnf clean all
 
 # Install build dependencies and packages
