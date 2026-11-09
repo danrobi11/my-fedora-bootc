@@ -61,13 +61,11 @@ RUN dnf -y remove \
     samba-core-libs \
     samba-ndr-libs \
     # here
-    alternatives \
     bind-utils \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
-    --exclude=alternatives \
     --exclude=bind-utils \
     --exclude=samba-client-libs \
     --exclude=samba-common \
@@ -196,6 +194,7 @@ RUN dnf -y install \
     pam-libs \
     systemd-pam \
     libpwquality \
+    alternatives \
 
     && dnf clean all
 
