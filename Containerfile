@@ -55,16 +55,30 @@ RUN dnf -y remove \
     nxpwireless-firmware \
     qcom-wwan-firmware \
     cloud-utils-growpart \
-    # here
     libsmbclient \
     samba-client-libs \
     samba-common \
     samba-core-libs \
     samba-ndr-libs \
+    # here
+    alternatives \
+    bind-utils \
+    cracklib \
+    cracklib-dicts \
+    pam \
+    pam-libs \
+    systemd-pam \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=systemd-pam \
+    --exclude=pam \
+    --exclude=pam-libs \
+    --exclude=cracklib \
+    --exclude=cracklib-dicts \
+    --exclude=alternatives \
+    --exclude=bind-utils \
     --exclude=samba-client-libs \
     --exclude=samba-common \
     --exclude=samba-core-libs \
@@ -120,9 +134,6 @@ RUN dnf -y install \
     # lib for torrent digger
     # webkit2gtk4.1 \
 
-    bootc \
-    bubblewrap \
-    containers-common-extra \
     NetworkManager-wifi \
     wpa_supplicant \
     iw \
@@ -170,6 +181,11 @@ RUN dnf -y install \
     # libva \
     # libva-utils \
     # glx-utils \
+
+    # Needed libs
+    bootc \
+    bubblewrap \
+    containers-common-extra \
     gsettings-desktop-schemas \
     cups-libs \
     cups-filesystem \
@@ -184,6 +200,7 @@ RUN dnf -y install \
     cryptsetup \
     cryptsetup-libs \
     libcloudproviders \
+
     && dnf clean all
 
 # # Install custom ratpoison binary
