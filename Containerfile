@@ -23,8 +23,6 @@ RUN dnf -y remove \
     sssd-ldap \
     adcli \
     adcli-selinux \
-    # here
-    harfbuzz \
     cirrus-audio-firmware \
     fribidi \
     intel-audio-firmware \
@@ -32,6 +30,7 @@ RUN dnf -y remove \
     intel-npu-firmware \
     nvidia-gpu-firmware \
     libaribcaption \
+    # here
     tiwilink-firmware \
     vim-data \
     vim-minimal \
@@ -61,7 +60,8 @@ RUN dnf -y remove \
 
 # Install build dependencies and packages
 RUN dnf -y install \
-    --exclude=harfbuzz \
+    --exclude=libaribcaption \
+    --exclude=fribidi \
     --exclude=tinysparql \
     --exclude=libtinysparql \
     --exclude=libcloudproviders \
