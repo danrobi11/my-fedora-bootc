@@ -3,6 +3,51 @@ FROM quay.io/fedora/fedora-bootc:45
 # Enable RPM Fusion free
 # RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && dnf clean all
 
+RUN dnf -y remove \
+    adobe-mappings-cmap \
+    adobe-mappings-cmap-deprecated \
+    adobe-mappings-pdf \
+    atheros-firmware \
+    net-tools \
+    pipewire-libs \
+    pulseaudio-libs \
+    libcanberra-backend-pulse \
+    flatpak-session-helper \
+    xdg-desktop-portal \
+    geoclue2 \
+    libcloudproviders \
+    localsearch \
+    tinysparql \
+    sssd-ad \
+    sssd-client \
+    sssd-common \
+    sssd-ipa \
+    sssd-krb5 \
+    sssd-ldap \
+    adcli \
+    gstreamer1 \
+    harfbuzz \
+    cirrus-audio-firmware \
+    fribidi \
+    intel-audio-firmware \
+    intel-gpu-firmware \
+    intel-mediasdk \
+    intel-npu-firmware \
+    intel-vpl-gpu-rt \
+    gsettings-desktop-schemas \
+    bluez-libs \
+    nvidia-gpu-firmware \
+    libaribcaption \
+    tiwilink-firmware \
+    vim-data \
+    vim-minimal \
+    nvme-cli \
+    pipewire \
+    wireplumber \
+    pipewire-pulseaudio \
+    pipewire-alsa \
+    && dnf clean all
+
 # Install build dependencies and packages
 RUN dnf -y install \
     git \
@@ -79,51 +124,6 @@ RUN dnf -y install \
     # libva \
     # libva-utils \
     # glx-utils \
-    && dnf clean all
-
-RUN dnf -y remove \
-    adobe-mappings-cmap \
-    adobe-mappings-cmap-deprecated \
-    adobe-mappings-pdf \
-    atheros-firmware \
-    net-tools \
-    pipewire-libs \
-    pulseaudio-libs \
-    libcanberra-backend-pulse \
-    flatpak-session-helper \
-    xdg-desktop-portal \
-    geoclue2 \
-    libcloudproviders \
-    localsearch \
-    tinysparql \
-    sssd-ad \
-    sssd-client \
-    sssd-common \
-    sssd-ipa \
-    sssd-krb5 \
-    sssd-ldap \
-    adcli \
-    gstreamer1 \
-    harfbuzz \
-    cirrus-audio-firmware \
-    fribidi \
-    intel-audio-firmware \
-    intel-gpu-firmware \
-    intel-mediasdk \
-    intel-npu-firmware \
-    intel-vpl-gpu-rt \
-    gsettings-desktop-schemas \
-    bluez-libs \
-    nvidia-gpu-firmware \
-    libaribcaption \
-    tiwilink-firmware \
-    vim-data \
-    vim-minimal \
-    nvme-cli \
-    pipewire \
-    wireplumber \
-    pipewire-pulseaudio \
-    pipewire-alsa \
     && dnf clean all
 
 # Needed libs
