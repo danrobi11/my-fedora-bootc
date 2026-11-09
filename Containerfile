@@ -67,10 +67,14 @@ RUN dnf -y remove \
     libmbim \
     libqmi \
     libqrtr-glib \
+    'qemu-user-static*' \
+    'nfs*' \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude='nfs*' \
+    --exclude='qemu-user-static*' \
     --exclude=libqrtr-glib \
     --exclude=libqmi \
     --exclude=libmbim \
