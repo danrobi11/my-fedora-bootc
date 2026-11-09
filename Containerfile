@@ -48,7 +48,6 @@ RUN dnf -y remove \
     libcanberra-gtk3 \
     intel-mediasdk \
     intel-vpl-gpu-rt \
-    gsettings-desktop-schemas \
     bluez-libs \
     pipewire \
     wireplumber \
@@ -76,7 +75,6 @@ RUN dnf -y install \
     --exclude=libcanberra-gtk3 \
     --exclude=intel-mediasdk \
     --exclude=intel-vpl-gpu-rt \
-    --exclude=gsettings-desktop-schemas \
     --exclude=bluez-libs \
     --exclude=pipewire \
     --exclude=wireplumber \
