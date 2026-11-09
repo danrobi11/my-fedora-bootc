@@ -4,6 +4,7 @@ FROM quay.io/fedora/fedora-bootc:45
 # RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && dnf clean all
 
 RUN dnf -y remove \
+    aardvark-dns \
     adobe-mappings-cmap \
     adobe-mappings-cmap-deprecated \
     adobe-mappings-pdf \
@@ -13,7 +14,9 @@ RUN dnf -y remove \
     geoclue2 \
     libcloudproviders \
     localsearch \
+    # here
     tinysparql \
+    libtinysparql \
     sssd-ad \
     sssd-client \
     sssd-common \
@@ -58,10 +61,14 @@ RUN dnf -y remove \
     pipewire-plugin-libcamera \
     pipewire-pulseaudio \
     pipewire-alsa \
+    abseil-cpp \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=libcloudproviders \
+    --exclude=abseil-cpp \
+    --exclude=aardvark-dns \
     --exclude=pipewire-libs \
     --exclude=pulseaudio-libs \
     --exclude=libcanberra-backend-pulse \
@@ -112,6 +119,8 @@ RUN dnf -y install \
     # lib for torrent digger
     # webkit2gtk4.1 \
 
+    bootc \
+    bubblewrap \
     NetworkManager-wifi \
     wpa_supplicant \
     iw \
@@ -159,10 +168,13 @@ RUN dnf -y install \
     # libva \
     # libva-utils \
     # glx-utils \
+    gsettings-desktop-schemas \
+    cups-libs \
+    cups-filesystem \
     && dnf clean all
 
 # Needed libs
-# cups-libs cups-filesystem bubblewrap
+#
 
 # # Install custom ratpoison binary
 # RUN mkdir -p /usr/local/bin && \
