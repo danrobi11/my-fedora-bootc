@@ -12,35 +12,15 @@ RUN dnf -y remove \
     xdg-desktop-portal \
     geoclue2 \
     localsearch \
-    sssd-ad \
-    sssd-client \
-    sssd-common \
-    sssd-ipa \
-    sssd-krb5 \
-    sssd-ldap \
     adcli \
     adcli-selinux \
-    intel-mediasdk \
-    intel-vpl-gpu-rt \
     bluez-libs \
-    pipewire \
     wireplumber \
     wireplumber-libs \
-    pipewire-jack-audio-connection-kit \
-    pipewire-jack-audio-connection-kit-libs \
-    pipewire-libs \
-    pipewire-plugin-libcamera \
-    pipewire-pulseaudio \
-    pipewire-alsa \
     pulseaudio-libs \
     gstreamer1 \
     gstreamer1-plugins-base \
     flatpak-session-helper \
-    libcanberra \
-    libcanberra-backend-alsa \
-    libcanberra-backend-gstreamer \
-    libcanberra-backend-pulse \
-    libcanberra-gtk3 \
     tiwilink-firmware \
     libaribcaption \
     vim-data \
@@ -51,15 +31,8 @@ RUN dnf -y remove \
     nxpwireless-firmware \
     qcom-wwan-firmware \
     cirrus-audio-firmware \
-    intel-audio-firmware \
-    intel-gpu-firmware \
-    intel-npu-firmware \
     cloud-utils-growpart \
     libsmbclient \
-    samba-client-libs \
-    samba-common \
-    samba-core-libs \
-    samba-ndr-libs \
     # here
     bind-utils \
     WALinuxAgent-udev \
@@ -67,28 +40,32 @@ RUN dnf -y remove \
     libmbim \
     libqmi \
     libqrtr-glib \
+    fstrm \
+    'intel*' \
+    'pipewire*' \
+    'samba*' \
+    'libcanberra*' \
+    'sssd*' \
     'qemu-user-static*' \
     'nfs*' \
-    'avahi*' \
-    fstrm \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
-    --exclude=fstrm \
-    --exclude='avahi*' \
+    --exclude='sssd*' \
+    --exclude='libcanberra*' \
+    --exclude='intel*' \
     --exclude='nfs*' \
     --exclude='qemu-user-static*' \
+    --exclude='pipewire*' \
+    --exclude='samba*' \
+    --exclude=fstrm \
     --exclude=libqrtr-glib \
     --exclude=libqmi \
     --exclude=libmbim \
     --exclude=ModemManager-glib \
     --exclude=WALinuxAgent-udev \
     --exclude=bind-utils \
-    --exclude=samba-client-libs \
-    --exclude=samba-common \
-    --exclude=samba-core-libs \
-    --exclude=samba-ndr-libs \
     --exclude=libsmbclient \
     --exclude=cloud-utils-growpart \
     --exclude=libaribcaption \
@@ -96,23 +73,10 @@ RUN dnf -y install \
     --exclude=flatpak-session-helper \
     --exclude=gstreamer1 \
     --exclude=gstreamer1-plugins-base \
-    --exclude=libcanberra \
-    --exclude=libcanberra-backend-alsa \
-    --exclude=libcanberra-backend-gstreamer \
-    --exclude=libcanberra-backend-pulse \
-    --exclude=libcanberra-gtk3 \
-    --exclude=intel-mediasdk \
-    --exclude=intel-vpl-gpu-rt \
     --exclude=bluez-libs \
-    --exclude=pipewire \
     --exclude=wireplumber \
     --exclude=wireplumber-libs \
-    --exclude=pipewire-jack-audio-connection-kit \
-    --exclude=pipewire-jack-audio-connection-kit-libs \
-    --exclude=pipewire-libs \
-    --exclude=pipewire-plugin-libcamera \
-    --exclude=pipewire-pulseaudio \
-    --exclude=pipewire-alsa \
+
     git \
     pkgconf \
     # conky \
