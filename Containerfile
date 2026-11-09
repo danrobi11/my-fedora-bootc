@@ -63,22 +63,10 @@ RUN dnf -y remove \
     # here
     alternatives \
     bind-utils \
-    cracklib \
-    cracklib-dicts \
-    pam \
-    pam-libs \
-    systemd-pam \
-    libpwquality \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
-    --exclude=libpwquality \
-    --exclude=systemd-pam \
-    --exclude=pam \
-    --exclude=pam-libs \
-    --exclude=cracklib \
-    --exclude=cracklib-dicts \
     --exclude=alternatives \
     --exclude=bind-utils \
     --exclude=samba-client-libs \
@@ -202,6 +190,12 @@ RUN dnf -y install \
     cryptsetup \
     cryptsetup-libs \
     libcloudproviders \
+    cracklib \
+    cracklib-dicts \
+    pam \
+    pam-libs \
+    systemd-pam \
+    libpwquality \
 
     && dnf clean all
 
