@@ -62,10 +62,20 @@ RUN dnf -y remove \
     samba-ndr-libs \
     # here
     bind-utils \
+    WALinuxAgent-udev \
+    ModemManager-glib \
+    libmbim \
+    libqmi \
+    libqrtr-glib \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=libqrtr-glib \
+    --exclude=libqmi \
+    --exclude=libmbim \
+    --exclude=ModemManager-glib \
+    --exclude=WALinuxAgent-udev \
     --exclude=bind-utils \
     --exclude=samba-client-libs \
     --exclude=samba-common \
