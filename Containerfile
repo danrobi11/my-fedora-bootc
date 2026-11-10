@@ -1,4 +1,5 @@
-FROM quay.io/fedora/fedora-bootc:45
+FROM quay.io/fedora/fedora-bootc:rawhide
+# FROM quay.io/fedora/fedora-bootc:45
 
 # Enable RPM Fusion free
 # RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && dnf clean all
@@ -52,8 +53,6 @@ RUN dnf -y remove \
 
 # Install build dependencies and packages
 RUN dnf -y install \
-    # --exclude=default-fonts-core-sans \
-    # --exclude=abattis-cantarell-vf-fonts \
     --exclude='adobe-mappings*' \
     --exclude='sssd*' \
     --exclude='libcanberra*' \
@@ -139,6 +138,7 @@ RUN dnf -y install \
     xorg-x11-xinit \
     xterm \
     rxvt-unicode \
+    xbanish \
     # alacritty \
     xclip \
     xset \
@@ -187,6 +187,8 @@ RUN dnf -y install \
     avahi \
     avahi-glib \
     avahi-libs \
+    abattis-cantarell-vf-fonts \
+    default-fonts-core-sans \
 
     && dnf clean all
 
