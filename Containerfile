@@ -46,14 +46,14 @@ RUN dnf -y remove \
     'qemu-user-static*' \
     'nfs*' \
     # here
-    abattis-cantarell-vf-fonts \
+    # abattis-cantarell-vf-fonts \
     # default-fonts-core-sans \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
     # --exclude=default-fonts-core-sans \
-    --exclude=abattis-cantarell-vf-fonts \
+    # --exclude=abattis-cantarell-vf-fonts \
     --exclude='adobe-mappings*' \
     --exclude='sssd*' \
     --exclude='libcanberra*' \
