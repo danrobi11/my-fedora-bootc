@@ -136,10 +136,10 @@ RUN dnf -y install \
     glibc-langpack-en \
 
     # For Browsers
-    gtk3 \
-    atk \
-    at-spi2-atk \
-    google-noto-emoji-color-fonts \
+    # gtk3 \
+    # atk \
+    # at-spi2-atk \
+    # google-noto-emoji-color-fonts \
 
     7zip \
     pciutils \
