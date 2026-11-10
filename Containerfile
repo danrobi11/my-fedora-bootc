@@ -57,11 +57,13 @@ RUN dnf -y remove \
     libluksmeta \
     luksmeta \
     libjxl \
+    glycin-libs \
 
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=glycin-libs \
     --exclude=libjxl \
     --exclude=libluksmeta \
     --exclude=luksmeta \
