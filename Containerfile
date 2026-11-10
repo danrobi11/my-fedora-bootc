@@ -47,12 +47,29 @@ RUN dnf -y remove \
     'qemu-user-static*' \
     'nfs*' \
     # here
-    # abattis-cantarell-vf-fonts \
-    # default-fonts-core-sans \
+    highway \
+    hiredis \
+    ima-evm-utils-libs \
+    inih \
+    irqbalance \
+    'clevis*' \
+    jose \
+    libluksmeta \
+    luksmeta \
+
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=libluksmeta \
+    --exclude=luksmeta \
+    --exclude='clevis*' \
+    --exclude=jose \
+    --exclude=irqbalance \
+    --exclude=inih \
+    --exclude=ima-evm-utils-libs \
+    --exclude=hiredis \
+    --exclude=highway \
     --exclude='adobe-mappings*' \
     --exclude='sssd*' \
     --exclude='libcanberra*' \
@@ -189,6 +206,11 @@ RUN dnf -y install \
     avahi-libs \
     abattis-cantarell-vf-fonts \
     default-fonts-core-sans \
+
+    fedora-repos-rawhide \
+    hwinfo-libs \
+    liburing \
+    libx86emu \
 
     && dnf clean all
 
