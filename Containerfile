@@ -56,11 +56,13 @@ RUN dnf -y remove \
     jose \
     libluksmeta \
     luksmeta \
+    libjxl \
 
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=libjxl \
     --exclude=libluksmeta \
     --exclude=luksmeta \
     --exclude='clevis*' \
