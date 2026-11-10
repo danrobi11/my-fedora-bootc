@@ -1,5 +1,4 @@
-FROM quay.io/fedora/fedora-bootc:rawhide
-# FROM quay.io/fedora/fedora-bootc:45
+FROM quay.io/fedora/fedora-bootc:46
 
 # Enable RPM Fusion free
 # RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && dnf clean all
