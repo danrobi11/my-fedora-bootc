@@ -4,10 +4,6 @@ FROM quay.io/fedora/fedora-bootc:45
 # RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && dnf clean all
 
 RUN dnf -y remove \
-    adobe-mappings-cmap \
-    adobe-mappings-cmap-deprecated \
-    adobe-mappings-pdf \
-    atheros-firmware \
     net-tools \
     xdg-desktop-portal \
     geoclue2 \
@@ -21,10 +17,11 @@ RUN dnf -y remove \
     gstreamer1 \
     gstreamer1-plugins-base \
     flatpak-session-helper \
-    tiwilink-firmware \
     libaribcaption \
     vim-data \
     vim-minimal \
+    tiwilink-firmware \
+    atheros-firmware \
     nvidia-gpu-firmware \
     mt7xxx-firmware \
     brcmfmac-firmware \
@@ -33,7 +30,6 @@ RUN dnf -y remove \
     cirrus-audio-firmware \
     cloud-utils-growpart \
     libsmbclient \
-    # here
     bind-utils \
     WALinuxAgent-udev \
     ModemManager-glib \
@@ -41,6 +37,7 @@ RUN dnf -y remove \
     libqmi \
     libqrtr-glib \
     fstrm \
+    'adobe-mappings*' \
     'intel*' \
     'pipewire*' \
     'samba*' \
@@ -48,10 +45,12 @@ RUN dnf -y remove \
     'sssd*' \
     'qemu-user-static*' \
     'nfs*' \
+    # here
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude='adobe-mappings*' \
     --exclude='sssd*' \
     --exclude='libcanberra*' \
     --exclude='intel*' \
@@ -99,7 +98,7 @@ RUN dnf -y install \
     # xorg-x11-server-Xephyr \
 
     # for antimicrox
-    # libglvnd-opengl \
+    libglvnd-opengl \
 
     # lib for torrent digger
     # webkit2gtk4.1 \
@@ -144,9 +143,12 @@ RUN dnf -y install \
 
     # lib for q3rally
     # sdl2-compat \
+    # openarena
+    sdl12-compat \
+    libvorbis \
 
     # videos
-    # mesa-dri-drivers \
+    mesa-dri-drivers \
     # mesa-va-drivers \
     # libva \
     # libva-utils \
@@ -177,6 +179,9 @@ RUN dnf -y install \
     systemd-pam \
     libpwquality \
     alternatives \
+    avahi \
+    avahi-glib \
+    avahi-libs \
 
     && dnf clean all
 
