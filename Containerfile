@@ -56,15 +56,11 @@ RUN dnf -y remove \
     jose \
     libluksmeta \
     luksmeta \
-    libjxl \
-    glycin-libs \
 
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
-    --exclude=glycin-libs \
-    --exclude=libjxl \
     --exclude=libluksmeta \
     --exclude=luksmeta \
     --exclude='clevis*' \
@@ -169,9 +165,10 @@ RUN dnf -y install \
 
     # lib for q3rally
     # sdl2-compat \
+
     # openarena
-    sdl12-compat \
-    libvorbis \
+    # sdl12-compat \
+    # libvorbis \
 
     # videos
     mesa-dri-drivers \
