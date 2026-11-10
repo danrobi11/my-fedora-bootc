@@ -59,11 +59,13 @@ RUN dnf -y remove \
     glycin-loaders \
     libjxl \
     highway \
+    gdk-pixbuf2 \
 
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=gdk-pixbuf2 \
     --exclude=highway \
     --exclude=libjxl \
     --exclude=glycin-loaders \
