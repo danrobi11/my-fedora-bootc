@@ -56,11 +56,17 @@ RUN dnf -y remove \
     jose \
     libluksmeta \
     luksmeta \
+    glycin-loaders \
+    libjxl \
+    highway \
 
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=highway \
+    --exclude=libjxl \
+    --exclude=glycin-loaders \
     --exclude=libluksmeta \
     --exclude=luksmeta \
     --exclude='clevis*' \
