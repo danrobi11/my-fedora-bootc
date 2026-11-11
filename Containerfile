@@ -60,7 +60,7 @@ RUN dnf -y remove \
     libjxl \
     highway \
     gdk-pixbuf2 \
-
+    && dnf -y autoremove \
     && dnf clean all
 
 # Install build dependencies and packages
