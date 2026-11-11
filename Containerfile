@@ -136,7 +136,7 @@ RUN dnf -y install \
     iw \
     wireless-regdb \
     android-tools \
-    libnotify \
+    # libnotify \
     glibc-langpack-en \
 
     # For Browsers
