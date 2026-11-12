@@ -1,6 +1,6 @@
 # Custom minimal Fedora bootc Image. 625 packages.
 
-Image: X11, ALSA, no desktop/WM.
+Image: X11, ALSA, amd-gpu, realtek-firmware, no Desktop/WM.
 
 ## The initial update after distro installation (You run this once): 
 sudo bootc switch ghcr.io/danrobi11/my-fedora-bootc:latest
