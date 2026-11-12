@@ -123,7 +123,7 @@ RUN dnf -y install \
     --exclude=wireplumber \
     --exclude=wireplumber-libs \
 
-    git \
+    # git \
     pkgconf \
     # conky \
     words \
