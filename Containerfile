@@ -57,7 +57,6 @@ RUN dnf -y remove \
     luksmeta \
     glycin-loaders \
     libjxl \
-    highway \
     gdk-pixbuf2 \
     snappy \
     python3-boto3 \
@@ -96,7 +95,6 @@ RUN dnf -y install \
     --exclude=inih \
     --exclude=ima-evm-utils-libs \
     --exclude=hiredis \
-    --exclude=highway \
     --exclude='adobe-mappings*' \
     --exclude='sssd*' \
     --exclude='libcanberra*' \
