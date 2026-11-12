@@ -1,6 +1,6 @@
 # Custom Fedora bootc Image
 
-Personal Fedora bootc image
+Personal Fedora bootc image: X11, ALSA, no desktop/WM.
 
 ## The initial update after distro installation (You run this once): 
 sudo bootc switch ghcr.io/danrobi11/my-fedora-bootc:latest
