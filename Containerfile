@@ -60,8 +60,7 @@ RUN dnf -y remove \
     highway \
     gdk-pixbuf2 \
     snappy \
-    # here
-python3-boto3 \
+    python3-boto3 \
     python3-botocore \
     python3-s3transfer \
     python3-jmespath \
@@ -69,10 +68,13 @@ python3-boto3 \
     fwupd \
     fwupd-efi \
     fwupd-plugin-uefi-capsule-data \
+    # here
+    git \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=git \
     --exclude=python3-boto3 \
     --exclude=python3-botocore \
     --exclude=python3-s3transfer \
@@ -203,6 +205,7 @@ RUN dnf -y install \
     # glx-utils \
 
     # Needed libs
+    git-core \
     bootc \
     bubblewrap \
     containers-common-extra \
