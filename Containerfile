@@ -64,12 +64,10 @@ RUN dnf -y remove \
     cyrus-sasl-lib \
     cyrus-sasl-gssapi \
     'elfutils*' \
-    fips-provider \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
-    --exclude=fips-provider \
     --exclude='elfutils*' \
     --exclude=cyrus-sasl-lib \
     --exclude=cyrus-sasl-gssapi \
