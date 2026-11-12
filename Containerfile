@@ -59,12 +59,28 @@ RUN dnf -y remove \
     libjxl \
     highway \
     gdk-pixbuf2 \
-    # here
     snappy \
+    # here
+python3-boto3 \
+    python3-botocore \
+    python3-s3transfer \
+    python3-jmespath \
+    stalld \
+    fwupd \
+    fwupd-efi \
+    fwupd-plugin-uefi-capsule-data \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=python3-boto3 \
+    --exclude=python3-botocore \
+    --exclude=python3-s3transfer \
+    --exclude=python3-jmespath \
+    --exclude=stalld \
+    --exclude=fwupd \
+    --exclude=fwupd-efi \
+    --exclude=fwupd-plugin-uefi-capsule-data \
     --exclude=snappy \
     --exclude=gdk-pixbuf2 \
     --exclude=highway \
@@ -136,7 +152,7 @@ RUN dnf -y install \
     wpa_supplicant \
     iw \
     wireless-regdb \
-    android-tools \
+    # android-tools \
     # libnotify \
     glibc-langpack-en \
 
