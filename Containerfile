@@ -46,7 +46,6 @@ RUN dnf -y remove \
     'sssd*' \
     'qemu-user-static*' \
     'nfs*' \
-    # here
     highway \
     hiredis \
     ima-evm-utils-libs \
@@ -60,11 +59,21 @@ RUN dnf -y remove \
     libjxl \
     highway \
     gdk-pixbuf2 \
-    && dnf -y autoremove \
+    # here
+    snappy \
+    cyrus-sasl-lib \
+    cyrus-sasl-gssapi \
+    'elfutils*' \
+    fips-provider \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=fips-provider \
+    --exclude='elfutils*' \
+    --exclude=cyrus-sasl-lib \
+    --exclude=cyrus-sasl-gssapi \
+    --exclude=snappy \
     --exclude=gdk-pixbuf2 \
     --exclude=highway \
     --exclude=libjxl \
@@ -163,7 +172,7 @@ RUN dnf -y install \
     xorg-x11-xinit \
     xterm \
     # rxvt-unicode \
-    xbanish \
+    # xbanish \
     # alacritty \
     xclip \
     xset \
