@@ -61,16 +61,12 @@ RUN dnf -y remove \
     gdk-pixbuf2 \
     # here
     snappy \
-    cyrus-sasl-lib \
-    cyrus-sasl-gssapi \
     'elfutils*' \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
     --exclude='elfutils*' \
-    --exclude=cyrus-sasl-lib \
-    --exclude=cyrus-sasl-gssapi \
     --exclude=snappy \
     --exclude=gdk-pixbuf2 \
     --exclude=highway \
