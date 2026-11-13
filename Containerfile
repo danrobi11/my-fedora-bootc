@@ -73,7 +73,6 @@ RUN dnf -y remove \
     'ntfs*' \
     'polkit*' \
     'sg3_utils*' \
-    'shadow-utils*' \
     sos \
     userspace-rcu \
     && dnf clean all
@@ -82,7 +81,6 @@ RUN dnf -y remove \
 RUN dnf -y install \
     --exclude=userspace-rcu \
     --exclude=sos \
-    --exclude='shadow-utils*' \
     --exclude='sg3_utils*' \
     --exclude='polkit*' \
     --exclude='ntfs*' \
