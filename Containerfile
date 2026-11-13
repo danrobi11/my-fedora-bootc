@@ -67,12 +67,32 @@ RUN dnf -y remove \
     fwupd \
     fwupd-efi \
     fwupd-plugin-uefi-capsule-data \
-    # here
     git \
+    # here
+    google-noto-fonts-common \
+    google-noto-sans-vf-fonts \
+    'nss*' \
+    'ntfs*' \
+    'polkit*' \
+    'sg3_utils*' \
+    'shadow-utils*' \
+    sos \
+    'tpm2*' \
+    userspace-rcu \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=userspace-rcu \
+    --exclude='tpm2*' \
+    --exclude=sos \
+    --exclude='shadow-utils*' \
+    --exclude='sg3_utils*' \
+    --exclude='polkit*' \
+    --exclude='ntfs*' \
+    --exclude='nss*' \
+    --exclude=google-noto-fonts-common \
+    --exclude=google-noto-sans-vf-fonts \
     --exclude=git \
     --exclude=python3-boto3 \
     --exclude=python3-botocore \
@@ -189,7 +209,7 @@ RUN dnf -y install \
     alsa-lib \
 
     # lib for q3rally
-    # sdl2-compat \
+    sdl2-compat \
 
     # openarena
     # sdl12-compat \
