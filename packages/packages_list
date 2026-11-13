@@ -193,7 +193,6 @@ libatasmart
 libattr
 libblkid
 libblockdev
-libblockdev-crypto
 libblockdev-fs
 libblockdev-loop
 libblockdev-mdraid
@@ -401,16 +400,6 @@ ngtcp2-crypto-ossl
 nilfs-utils
 npth
 nspr
-nss
-nss-altfiles
-nss-softokn
-nss-softokn-freebl
-nss-sysinit
-nss-util
-ntfs-3g
-ntfs-3g-libs
-ntfs-3g-system-compression
-ntfsprogs
 numactl-libs
 nvme-cli
 oniguruma
@@ -445,9 +434,6 @@ pkgconf-pkg-config
 podman
 podman-sequoia
 policycoreutils
-polkit
-polkit-libs
-polkit-pkla-compat
 popt
 procps-ng
 protobuf3-c
@@ -481,7 +467,6 @@ redhat-systemd-presets-common
 rpcbind
 rpm
 rpm-libs
-rpm-ostree
 rpm-ostree-libs
 rpm-plugin-audit
 rpm-plugin-selinux
@@ -492,8 +477,6 @@ selinux-policy
 selinux-policy-targeted
 setup
 setxkbmap
-sg3_utils
-sg3_utils-libs
 shadow-utils
 shadow-utils-subid
 shared-mime-info
@@ -501,7 +484,6 @@ shim-x64
 skopeo
 slang
 socat
-sos
 spirv-tools-libs
 sqlite-libs
 squashfs-tools
@@ -520,12 +502,9 @@ tpm2-tss
 tpm2-tss-fapi
 tzdata
 udftools
-udisks2
 unzip
-userspace-rcu
 util-linux
 util-linux-core
-volume_key-libs
 wcurl
 wget1
 wget1-wget
