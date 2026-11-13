@@ -77,14 +77,12 @@ RUN dnf -y remove \
     'sg3_utils*' \
     'shadow-utils*' \
     sos \
-    'tpm2*' \
     userspace-rcu \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
     --exclude=userspace-rcu \
-    --exclude='tpm2*' \
     --exclude=sos \
     --exclude='shadow-utils*' \
     --exclude='sg3_utils*' \
