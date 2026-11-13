@@ -1,4 +1,4 @@
-# Custom minimal Fedora (rawhide) bootc Image. 558 packages.
+# Custom minimal Fedora (rawhide) bootc Image. 537 packages.
 
 Image: `X11, ALSA, amd-gpu, realtek-firmware, no Desktop/WM`.
 
