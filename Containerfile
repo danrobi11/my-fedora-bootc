@@ -69,8 +69,6 @@ RUN dnf -y remove \
     fwupd-plugin-uefi-capsule-data \
     git \
     # here
-    google-noto-fonts-common \
-    google-noto-sans-vf-fonts \
     'nss*' \
     'ntfs*' \
     'polkit*' \
@@ -89,8 +87,6 @@ RUN dnf -y install \
     --exclude='polkit*' \
     --exclude='ntfs*' \
     --exclude='nss*' \
-    --exclude=google-noto-fonts-common \
-    --exclude=google-noto-sans-vf-fonts \
     --exclude=git \
     --exclude=python3-boto3 \
     --exclude=python3-botocore \
@@ -251,6 +247,8 @@ RUN dnf -y install \
     avahi-libs \
     abattis-cantarell-vf-fonts \
     default-fonts-core-sans \
+    google-noto-fonts-common \
+    google-noto-sans-vf-fonts \
 
     fedora-repos-rawhide \
     hwinfo-libs \
