@@ -158,7 +158,7 @@ RUN dnf -y install \
     libglvnd-opengl \
 
     # lib for torrent digger
-    # webkit2gtk4.1 \
+    webkit2gtk4.1 \
 
     NetworkManager-wifi \
     wpa_supplicant \
@@ -169,10 +169,10 @@ RUN dnf -y install \
     glibc-langpack-en \
 
     # For Browsers
-    # gtk3 \
-    # atk \
-    # at-spi2-atk \
-    # google-noto-emoji-color-fonts \
+    gtk3 \
+    atk \
+    at-spi2-atk \
+    google-noto-emoji-color-fonts \
 
     7zip \
     pciutils \
@@ -200,8 +200,9 @@ RUN dnf -y install \
     alsa-utils \
     alsa-lib \
 
-    # lib for q3rally
-    # sdl2-compat \
+    # lib for q3rally and xonotic
+    # sdl2-compat pulls 128 dependencies!
+    sdl2-compat \
 
     # openarena
     # sdl12-compat \
@@ -247,6 +248,8 @@ RUN dnf -y install \
     default-fonts-core-sans \
     google-noto-fonts-common \
     google-noto-sans-vf-fonts \
+    shadow-utils \
+
 
     fedora-repos-rawhide \
     hwinfo-libs \
@@ -292,6 +295,12 @@ RUN mkdir -p /etc/systemd/logind.conf.d && \
 RUN systemctl enable nftables.service
 COPY nftables.conf /etc/sysconfig/nftables.conf
 
+# Stop systemd-journald from getting huge
+# Limit journald size
+RUN mkdir -p /etc/systemd/journald.conf.d && \
+    printf '[Journal]\nSystemMaxUse=500M\nSystemKeepFree=1G\nMaxRetentionSec=1month\n' \
+    > /etc/systemd/journald.conf.d/limits.conf
+
 # Create bound-images
 # RUN mkdir -p /usr/lib/bootc/bound-images.d
 
@@ -321,7 +330,7 @@ COPY nftables.conf /etc/sysconfig/nftables.conf
 
 # # Rootless Quadlets for UID 1000
 # RUN mkdir -p /etc/containers/systemd/users/1000
-# # COPY emacs.container /etc/containers/systemd/users/1000/emacs.container
+# COPY emacs.container /etc/containers/systemd/users/1000/emacs.container
 # COPY rsshub.container /etc/containers/systemd/users/1000/rsshub.container
 # COPY cloudflared.container /etc/containers/systemd/users/1000/cloudflared.container
 # COPY jackett.container /etc/containers/systemd/users/1000/jackett.container
