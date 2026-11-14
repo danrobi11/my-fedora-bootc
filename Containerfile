@@ -158,7 +158,7 @@ RUN dnf -y install \
     libglvnd-opengl \
 
     # lib for torrent digger
-    webkit2gtk4.1 \
+    # webkit2gtk4.1 \
 
     NetworkManager-wifi \
     wpa_supplicant \
@@ -169,10 +169,10 @@ RUN dnf -y install \
     glibc-langpack-en \
 
     # For Browsers
-    gtk3 \
-    atk \
-    at-spi2-atk \
-    google-noto-emoji-color-fonts \
+    # gtk3 \
+    # atk \
+    # at-spi2-atk \
+    # google-noto-emoji-color-fonts \
 
     7zip \
     pciutils \
@@ -202,7 +202,7 @@ RUN dnf -y install \
 
     # lib for q3rally and xonotic
     # sdl2-compat pulls 128 dependencies!
-    sdl2-compat \
+    # sdl2-compat \
 
     # openarena
     # sdl12-compat \
