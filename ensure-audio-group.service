@@ -1,5 +1,5 @@
 [Unit]
-Description=Ensure danrobi is in the audio group
+Description=Ensure danrobi is in the audio and input groups
 After=local-fs.target
 Before=multi-user.target
 
