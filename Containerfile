@@ -279,7 +279,7 @@ RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
     ln -sf /usr/lib/systemd/system/wpa_supplicant.service \
     /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
 
-# Ensure user is in audio group on boot
+# Ensure user is in the audio and input groups on boot
 COPY ensure-audio-group.sh /usr/local/bin/ensure-audio-group.sh
 COPY ensure-audio-group.service /etc/systemd/system/ensure-audio-group.service
 RUN chmod +x /usr/local/bin/ensure-audio-group.sh && \
