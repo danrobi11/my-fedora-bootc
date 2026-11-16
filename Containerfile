@@ -88,7 +88,6 @@ RUN dnf -y remove \
     libtalloc \
     libtdb \
     libtevent \
-    # here
     rpcbind \
     libnfsidmap \
     gssproxy \
@@ -96,6 +95,14 @@ RUN dnf -y remove \
     libndp \
     passim \
     passim-libs \
+    # here
+    python3-html2text \
+    python3-requests \
+    python3-dateutil \
+    python3-pexpect \
+    python3-ptyprocess \
+    python3-pyyaml \
+    python3-file-magic \
     && dnf clean all
 
 # Install build dependencies and packages
@@ -121,6 +128,13 @@ RUN dnf -y install \
     --exclude=libndp \
     --exclude=passim \
     --exclude=passim-libs \
+    --exclude=python3-html2text \
+    --exclude=python3-requests \
+    --exclude=python3-dateutil \
+    --exclude=python3-pexpect \
+    --exclude=python3-ptyprocess \
+    --exclude=python3-pyyaml \
+    --exclude=python3-file-magic \
     --exclude=userspace-rcu \
     --exclude=sos \
     --exclude='sg3_utils*' \
