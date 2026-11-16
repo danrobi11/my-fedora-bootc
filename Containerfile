@@ -76,11 +76,37 @@ RUN dnf -y remove \
     userspace-rcu \
     NetworkManager \
     # here
+    NetworkManager-libnm \
+    console-login-helper-messages \
+    console-login-helper-messages-profile \
+    libsss_sudo \
+    libsss_nss_idmap \
+    libsss_idmap \
+    libsss_certmap \
+    libipa_hbac \
+    libwbclient \
+    libldb \
+    libtalloc \
+    libtdb \
+    libtevent \
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=console-login-helper-messages \
+    --exclude=console-login-helper-messages-profile \
+    --exclude=NetworkManager-libnm \
     --exclude=NetworkManager \
+    --exclude=libsss_sudo \
+    --exclude=libsss_nss_idmap \
+    --exclude=libsss_idmap \
+    --exclude=libsss_certmap \
+    --exclude=libipa_hbac \
+    --exclude=libwbclient \
+    --exclude=libldb \
+    --exclude=libtalloc \
+    --exclude=libtdb \
+    --exclude=libtevent \
     --exclude=userspace-rcu \
     --exclude=sos \
     --exclude='sg3_utils*' \
@@ -221,20 +247,20 @@ RUN dnf -y install \
     bootc \
     bubblewrap \
     containers-common-extra \
-    gsettings-desktop-schemas \
-    cups-libs \
-    cups-filesystem \
+    # gsettings-desktop-schemas \
+    # cups-libs \
+    # cups-filesystem \
     aardvark-dns \
     podman \
     abseil-cpp \
     fribidi \
-    tinysparql \
-    libtinysparql \
+    # tinysparql \
+    # libtinysparql \
     crypto-policies \
     crypto-policies-scripts \
     cryptsetup \
     cryptsetup-libs \
-    libcloudproviders \
+    # libcloudproviders \
     cracklib \
     cracklib-dicts \
     pam \
@@ -242,10 +268,10 @@ RUN dnf -y install \
     systemd-pam \
     libpwquality \
     alternatives \
-    avahi \
-    avahi-glib \
-    avahi-libs \
-    abattis-cantarell-vf-fonts \
+    # avahi \
+    # avahi-glib \
+    # avahi-libs \
+    # abattis-cantarell-vf-fonts \
     default-fonts-core-sans \
     google-noto-fonts-common \
     google-noto-sans-vf-fonts \
