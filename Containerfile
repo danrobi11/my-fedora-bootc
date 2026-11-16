@@ -21,14 +21,6 @@ RUN dnf -y remove \
     libaribcaption \
     vim-data \
     vim-minimal \
-    tiwilink-firmware \
-    atheros-firmware \
-    nvidia-gpu-firmware \
-    mt7xxx-firmware \
-    brcmfmac-firmware \
-    nxpwireless-firmware \
-    qcom-wwan-firmware \
-    cirrus-audio-firmware \
     cloud-utils-growpart \
     libsmbclient \
     bind-utils \
@@ -38,6 +30,16 @@ RUN dnf -y remove \
     libqmi \
     libqrtr-glib \
     fstrm \
+    
+    tiwilink-firmware \
+    atheros-firmware \
+    nvidia-gpu-firmware \
+    mt7xxx-firmware \
+    brcmfmac-firmware \
+    nxpwireless-firmware \
+    qcom-wwan-firmware \
+    cirrus-audio-firmware \
+
     'adobe-mappings*' \
     'intel*' \
     'pipewire*' \
@@ -46,12 +48,17 @@ RUN dnf -y remove \
     'sssd*' \
     'qemu-user-static*' \
     'nfs*' \
+    'clevis*' \
+    'nss*' \
+    'ntfs*' \
+    'polkit*' \
+    'sg3_utils*' \
+
     highway \
     hiredis \
     ima-evm-utils-libs \
     inih \
     irqbalance \
-    'clevis*' \
     jose \
     libluksmeta \
     luksmeta \
@@ -59,19 +66,11 @@ RUN dnf -y remove \
     libjxl \
     gdk-pixbuf2 \
     snappy \
-    python3-boto3 \
-    python3-botocore \
-    python3-s3transfer \
-    python3-jmespath \
     stalld \
     fwupd \
     fwupd-efi \
     fwupd-plugin-uefi-capsule-data \
     git \
-    'nss*' \
-    'ntfs*' \
-    'polkit*' \
-    'sg3_utils*' \
     sos \
     userspace-rcu \
     NetworkManager \
@@ -95,7 +94,10 @@ RUN dnf -y remove \
     libndp \
     passim \
     passim-libs \
-    # here
+    python3-boto3 \
+    python3-botocore \
+    python3-s3transfer \
+    python3-jmespath \
     python3-html2text \
     python3-requests \
     python3-dateutil \
@@ -103,6 +105,7 @@ RUN dnf -y remove \
     python3-ptyprocess \
     python3-pyyaml \
     python3-file-magic \
+    # here
     && dnf clean all
 
 # Install build dependencies and packages
@@ -190,11 +193,10 @@ RUN dnf -y install \
     --exclude=wireplumber-libs \
 
     # Personal packages:
-    # git \
+
     git-core \
+    gh \
     pkgconf \
-    # conky \
-    words \
     nftables \
     # feh \
     fuse \
@@ -209,6 +211,25 @@ RUN dnf -y install \
     # for neomacs
     # libxkbcommon-x11 \
 
+    # for the Wi-Fi chip
+    realtek-firmware \
+
+    # for the Ethernet chip
+    linux-firmware \
+
+    # for the license text that documents the blobs
+    linux-firmware-whence \
+
+    # for the CPU microcode
+    amd-ucode-firmware \
+
+    # for the GPU firmware. The Radeon HD 6480G Sumo chip
+    amd-gpu-firmware \
+
+    # for conky \
+    fribidi \
+    iw \
+
     # for cpak
     # xorg-x11-server-Xephyr \
 
@@ -218,12 +239,18 @@ RUN dnf -y install \
     # lib for torrent digger
     # webkit2gtk4.1 \
 
+    # internet
     iwd \
-    iw \
+    # for the CA channel list
     wireless-regdb \
+
     # android-tools \
     # libnotify \
+
+    # for emacs
+    words \
     glibc-langpack-en \
+    xclip \
 
     # For Browsers
     # gtk3 \
@@ -239,29 +266,29 @@ RUN dnf -y install \
     sudo \
     which \
     jq \
+    dmenu \
 
-    # for ratpoison
+    # for ratpoison WM
     libXtst \
 
-    # scrot \
-    dmenu \
     xorg-x11-server-Xorg \
     xorg-x11-xinit \
     xterm \
     # rxvt-unicode \
     # xbanish \
     # alacritty \
-    xclip \
     xset \
     xrandr \
+
+    # audio
     alsa-utils \
     alsa-lib \
 
-    # lib for q3rally and xonotic
+    # for q3rally and xonotic
     # sdl2-compat pulls 128 dependencies!
     # sdl2-compat \
 
-    # openarena
+    # for openarena
     # sdl12-compat \
     # libvorbis \
 
@@ -271,35 +298,6 @@ RUN dnf -y install \
     # libva \
     # libva-utils \
     # glx-utils \
-
-    # list of package that once broke the built when they were in the excluded list.
-    # More packages we remove, then some might be able to go
-    # bootc \
-    # bubblewrap \
-    # containers-common-extra \
-    # aardvark-dns \
-    # podman \
-    # abseil-cpp \
-    # fribidi \
-    # crypto-policies \
-    # crypto-policies-scripts \
-    # cryptsetup \
-    # cryptsetup-libs \
-    # cracklib \
-    # cracklib-dicts \
-    # pam \
-    # pam-libs \
-    # systemd-pam \
-    # libpwquality \
-    # alternatives \
-    # default-fonts-core-sans \
-    # google-noto-fonts-common \
-    # google-noto-sans-vf-fonts \
-    # shadow-utils \
-    # fedora-repos-rawhide \
-    # hwinfo-libs \
-    # liburing \
-    # libx86emu \
 
     && dnf clean all
 
@@ -324,7 +322,7 @@ RUN systemctl mask bootc-fetch-apply-updates.timer
 #     ln -sf /usr/lib/systemd/system/wpa_supplicant.service \
 #     /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
 
-# iwd owns the Wi-Fi link, DHCP, and DNS. wireless-regdb stays for the CA channel list.
+# iwd owns the Wi-Fi link, DHCP, and DNS.
 RUN mkdir -p /etc/iwd && \
     printf '[General]\nEnableNetworkConfiguration=true\nCountry=CA\n\n[Network]\nNameResolvingService=systemd\n' \
     > /etc/iwd/main.conf && \
