@@ -75,7 +75,6 @@ RUN dnf -y remove \
     sos \
     userspace-rcu \
     NetworkManager \
-    # here
     NetworkManager-libnm \
     console-login-helper-messages \
     console-login-helper-messages-profile \
@@ -89,6 +88,14 @@ RUN dnf -y remove \
     libtalloc \
     libtdb \
     libtevent \
+    # here
+    rpcbind \
+    libnfsidmap \
+    gssproxy \
+    cyrus-sasl-gssapi \
+    libndp \
+    passim \
+    passim-libs \
     && dnf clean all
 
 # Install build dependencies and packages
@@ -107,6 +114,13 @@ RUN dnf -y install \
     --exclude=libtalloc \
     --exclude=libtdb \
     --exclude=libtevent \
+    --exclude=rpcbind \
+    --exclude=libnfsidmap \
+    --exclude=gssproxy \
+    --exclude=cyrus-sasl-gssapi \
+    --exclude=libndp \
+    --exclude=passim \
+    --exclude=passim-libs \
     --exclude=userspace-rcu \
     --exclude=sos \
     --exclude='sg3_utils*' \
@@ -161,7 +175,9 @@ RUN dnf -y install \
     --exclude=wireplumber \
     --exclude=wireplumber-libs \
 
+    # Personal packages:
     # git \
+    git-core \
     pkgconf \
     # conky \
     words \
@@ -242,25 +258,19 @@ RUN dnf -y install \
     # libva-utils \
     # glx-utils \
 
-    # Needed libs
-    git-core \
+    # list of package that once broke the built when they were in the excluded list.
+    # More packages we remove, then some might be able to go
     bootc \
     bubblewrap \
     containers-common-extra \
-    # gsettings-desktop-schemas \
-    # cups-libs \
-    # cups-filesystem \
     aardvark-dns \
     podman \
     abseil-cpp \
     fribidi \
-    # tinysparql \
-    # libtinysparql \
     crypto-policies \
     crypto-policies-scripts \
     cryptsetup \
     cryptsetup-libs \
-    # libcloudproviders \
     cracklib \
     cracklib-dicts \
     pam \
@@ -268,16 +278,10 @@ RUN dnf -y install \
     systemd-pam \
     libpwquality \
     alternatives \
-    # avahi \
-    # avahi-glib \
-    # avahi-libs \
-    # abattis-cantarell-vf-fonts \
     default-fonts-core-sans \
     google-noto-fonts-common \
     google-noto-sans-vf-fonts \
     shadow-utils \
-
-
     fedora-repos-rawhide \
     hwinfo-libs \
     liburing \
