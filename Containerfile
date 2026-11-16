@@ -274,32 +274,32 @@ RUN dnf -y install \
 
     # list of package that once broke the built when they were in the excluded list.
     # More packages we remove, then some might be able to go
-    bootc \
-    bubblewrap \
-    containers-common-extra \
-    aardvark-dns \
-    podman \
-    abseil-cpp \
-    fribidi \
-    crypto-policies \
-    crypto-policies-scripts \
-    cryptsetup \
-    cryptsetup-libs \
-    cracklib \
-    cracklib-dicts \
-    pam \
-    pam-libs \
-    systemd-pam \
-    libpwquality \
-    alternatives \
-    default-fonts-core-sans \
-    google-noto-fonts-common \
-    google-noto-sans-vf-fonts \
-    shadow-utils \
-    fedora-repos-rawhide \
-    hwinfo-libs \
-    liburing \
-    libx86emu \
+    # bootc \
+    # bubblewrap \
+    # containers-common-extra \
+    # aardvark-dns \
+    # podman \
+    # abseil-cpp \
+    # fribidi \
+    # crypto-policies \
+    # crypto-policies-scripts \
+    # cryptsetup \
+    # cryptsetup-libs \
+    # cracklib \
+    # cracklib-dicts \
+    # pam \
+    # pam-libs \
+    # systemd-pam \
+    # libpwquality \
+    # alternatives \
+    # default-fonts-core-sans \
+    # google-noto-fonts-common \
+    # google-noto-sans-vf-fonts \
+    # shadow-utils \
+    # fedora-repos-rawhide \
+    # hwinfo-libs \
+    # liburing \
+    # libx86emu \
 
     && dnf clean all
 
