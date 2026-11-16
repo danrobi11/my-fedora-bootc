@@ -68,17 +68,19 @@ RUN dnf -y remove \
     fwupd-efi \
     fwupd-plugin-uefi-capsule-data \
     git \
-    # here
     'nss*' \
     'ntfs*' \
     'polkit*' \
     'sg3_utils*' \
     sos \
     userspace-rcu \
+    NetworkManager \
+    # here
     && dnf clean all
 
 # Install build dependencies and packages
 RUN dnf -y install \
+    --exclude=NetworkManager \
     --exclude=userspace-rcu \
     --exclude=sos \
     --exclude='sg3_utils*' \
@@ -155,13 +157,12 @@ RUN dnf -y install \
     # xorg-x11-server-Xephyr \
 
     # for antimicrox
-    libglvnd-opengl \
+    # libglvnd-opengl \
 
     # lib for torrent digger
     # webkit2gtk4.1 \
 
-    NetworkManager-wifi \
-    wpa_supplicant \
+    iwd \
     iw \
     wireless-regdb \
     # android-tools \
@@ -275,9 +276,15 @@ RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 RUN systemctl mask bootc-fetch-apply-updates.timer
 
 # Enable wpa_supplicant
-RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
-    ln -sf /usr/lib/systemd/system/wpa_supplicant.service \
-    /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
+# RUN mkdir -p /etc/systemd/system/multi-user.target.wants && \
+#     ln -sf /usr/lib/systemd/system/wpa_supplicant.service \
+#     /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service
+
+# iwd owns the Wi-Fi link, DHCP, and DNS. wireless-regdb stays for the CA channel list.
+RUN mkdir -p /etc/iwd && \
+    printf '[General]\nEnableNetworkConfiguration=true\nCountry=CA\n\n[Network]\nNameResolvingService=systemd\n' \
+    > /etc/iwd/main.conf && \
+    systemctl enable iwd.service
 
 # Ensure user is in the audio and input groups on boot
 COPY ensure-audio-group.sh /usr/local/bin/ensure-audio-group.sh
