@@ -105,6 +105,11 @@ RUN dnf -y remove \
     python3-ptyprocess \
     python3-pyyaml \
     python3-file-magic \
+    python3-urllib3 \
+    python3-urllib3+socks \
+    python3-idna \
+    python3-charset-normalizer \
+    python3-pysocks \
     quota \
     quota-nls \
     iptables-services \
@@ -122,7 +127,11 @@ RUN dnf -y remove \
     p11-kit-server \
     newt \
     slang \
-    # here
+    avahi \
+    avahi-libs \
+    libsoup3 \
+    glib-networking \
+    gsettings-desktop-schemas \
     && dnf clean all
 
 # Install build dependencies and packages
@@ -148,13 +157,6 @@ RUN dnf -y install \
     --exclude=libndp \
     --exclude=passim \
     --exclude=passim-libs \
-    --exclude=python3-html2text \
-    --exclude=python3-requests \
-    --exclude=python3-dateutil \
-    --exclude=python3-pexpect \
-    --exclude=python3-ptyprocess \
-    --exclude=python3-pyyaml \
-    --exclude=python3-file-magic \
     --exclude=quota \
     --exclude=quota-nls \
     --exclude=iptables-services \
@@ -172,6 +174,27 @@ RUN dnf -y install \
     --exclude=p11-kit-server \
     --exclude=newt \
     --exclude=slang \
+    --exclude=avahi \
+    --exclude=avahi-libs \
+    --exclude=libsoup3 \
+    --exclude=glib-networking \
+    --exclude=gsettings-desktop-schemas \
+    --exclude=python3-urllib3 \
+    --exclude=python3-urllib3+socks \
+    --exclude=python3-idna \
+    --exclude=python3-charset-normalizer \
+    --exclude=python3-pysocks \
+    --exclude=python3-boto3 \
+    --exclude=python3-botocore \
+    --exclude=python3-s3transfer \
+    --exclude=python3-jmespath \
+    --exclude=python3-html2text \
+    --exclude=python3-requests \
+    --exclude=python3-dateutil \
+    --exclude=python3-pexpect \
+    --exclude=python3-ptyprocess \
+    --exclude=python3-pyyaml \
+    --exclude=python3-file-magic \
     --exclude=userspace-rcu \
     --exclude=sos \
     --exclude='sg3_utils*' \
@@ -179,10 +202,6 @@ RUN dnf -y install \
     --exclude='ntfs*' \
     --exclude='nss*' \
     --exclude=git \
-    --exclude=python3-boto3 \
-    --exclude=python3-botocore \
-    --exclude=python3-s3transfer \
-    --exclude=python3-jmespath \
     --exclude=stalld \
     --exclude=fwupd \
     --exclude=fwupd-efi \
