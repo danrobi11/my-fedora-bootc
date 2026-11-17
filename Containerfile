@@ -105,6 +105,23 @@ RUN dnf -y remove \
     python3-ptyprocess \
     python3-pyyaml \
     python3-file-magic \
+    quota \
+    quota-nls \
+    iptables-services \
+    iptables-utils \
+    iptables-nft \
+    iproute-tc \
+    criu \
+    criu-libs \
+    gawk-all-langpacks \
+    elfutils-debuginfod-client \
+    memstrack \
+    socat \
+    cpp \
+    libmaxminddb \
+    p11-kit-server \
+    newt \
+    slang \
     # here
     && dnf clean all
 
@@ -138,6 +155,23 @@ RUN dnf -y install \
     --exclude=python3-ptyprocess \
     --exclude=python3-pyyaml \
     --exclude=python3-file-magic \
+    --exclude=quota \
+    --exclude=quota-nls \
+    --exclude=iptables-services \
+    --exclude=iptables-utils \
+    --exclude=iptables-nft \
+    --exclude=iproute-tc \
+    --exclude=criu \
+    --exclude=criu-libs \
+    --exclude=gawk-all-langpacks \
+    --exclude=elfutils-debuginfod-client \
+    --exclude=memstrack \
+    --exclude=socat \
+    --exclude=cpp \
+    --exclude=libmaxminddb \
+    --exclude=p11-kit-server \
+    --exclude=newt \
+    --exclude=slang \
     --exclude=userspace-rcu \
     --exclude=sos \
     --exclude='sg3_utils*' \
@@ -194,8 +228,6 @@ RUN dnf -y install \
 
     # Personal packages:
 
-    git-core \
-    gh \
     pkgconf \
     nftables \
     # feh \
@@ -207,9 +239,6 @@ RUN dnf -y install \
     # for who?
     # libxcrypt-compat \
     # libnsl \
-
-    # for neomacs
-    # libxkbcommon-x11 \
 
     # for the Wi-Fi chip
     realtek-firmware \
@@ -248,9 +277,14 @@ RUN dnf -y install \
     # libnotify \
 
     # for emacs
+    git-core \
+    gh \
     words \
     glibc-langpack-en \
     xclip \
+
+    # for neomacs
+    # libxkbcommon-x11 \
 
     # For Browsers
     # gtk3 \
