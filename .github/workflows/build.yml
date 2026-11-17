@@ -4,6 +4,7 @@ on:
   push:
     branches: [ main ]
     paths-ignore:
+      - 'packages_list'
       - 'README.md'
   workflow_dispatch:
 
