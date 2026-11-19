@@ -377,9 +377,15 @@ RUN systemctl mask bootc-fetch-apply-updates.timer
 
 # iwd owns the Wi-Fi link, DHCP, and DNS.
 RUN mkdir -p /etc/iwd && \
-    printf '[General]\nEnableNetworkConfiguration=true\nCountry=CA\n\n[Network]\nNameResolvingService=systemd\n' \
+    printf '[General]\nEnableNetworkConfiguration=true\nCountry=CA\n\n[Network]\nNameResolvingService=none\n' \
     > /etc/iwd/main.conf && \
     systemctl enable iwd.service
+
+# Quad9 is the only upstream DNS. iwd does not pass the router address.
+RUN mkdir -p /etc/systemd/resolved.conf.d && \
+    printf '[Resolve]\nDNS=9.9.9.9#dns.quad9.net 149.112.112.112#dns.quad9.net 2620:fe::fe#dns.quad9.net 2620:fe::9#dns.quad9.net\nDNSOverTLS=yes\n' \
+    > /etc/systemd/resolved.conf.d/quad9.conf && \
+    systemctl enable systemd-resolved.service
 
 # Ensure user is in the audio and input groups on boot
 COPY ensure-audio-group.sh /usr/local/bin/ensure-audio-group.sh
